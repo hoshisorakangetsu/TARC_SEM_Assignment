@@ -6,7 +6,9 @@ export const Route = createRootRoute({
   component: () => (
     <>
       <Header />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       {/* vite MODE can be 'development' | 'production' | 'staging', only show dev tools under development mode */}
       {import.meta.env.MODE === "development" && <TanStackRouterDevtools />}
     </>
