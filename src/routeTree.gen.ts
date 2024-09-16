@@ -16,7 +16,9 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
+const ResearchCenterLazyImport = createFileRoute('/researchCenter')()
 const HighlightsLazyImport = createFileRoute('/highlights')()
+const FacilitiesLazyImport = createFileRoute('/facilities')()
 const ContactUsLazyImport = createFileRoute('/contactUs')()
 const AchievementsLazyImport = createFileRoute('/achievements')()
 const AboutLazyImport = createFileRoute('/about')()
@@ -24,10 +26,22 @@ const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
 
+const ResearchCenterLazyRoute = ResearchCenterLazyImport.update({
+  path: '/researchCenter',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/researchCenter.lazy').then((d) => d.Route),
+)
+
 const HighlightsLazyRoute = HighlightsLazyImport.update({
   path: '/highlights',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/highlights.lazy').then((d) => d.Route))
+
+const FacilitiesLazyRoute = FacilitiesLazyImport.update({
+  path: '/facilities',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/facilities.lazy').then((d) => d.Route))
 
 const ContactUsLazyRoute = ContactUsLazyImport.update({
   path: '/contactUs',
@@ -81,11 +95,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactUsLazyImport
       parentRoute: typeof rootRoute
     }
+    '/facilities': {
+      id: '/facilities'
+      path: '/facilities'
+      fullPath: '/facilities'
+      preLoaderRoute: typeof FacilitiesLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/highlights': {
       id: '/highlights'
       path: '/highlights'
       fullPath: '/highlights'
       preLoaderRoute: typeof HighlightsLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/researchCenter': {
+      id: '/researchCenter'
+      path: '/researchCenter'
+      fullPath: '/researchCenter'
+      preLoaderRoute: typeof ResearchCenterLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -98,7 +126,9 @@ interface FileRoutesByFullPath {
   '/about': typeof AboutLazyRoute
   '/achievements': typeof AchievementsLazyRoute
   '/contactUs': typeof ContactUsLazyRoute
+  '/facilities': typeof FacilitiesLazyRoute
   '/highlights': typeof HighlightsLazyRoute
+  '/researchCenter': typeof ResearchCenterLazyRoute
 }
 
 interface FileRoutesByTo {
@@ -106,7 +136,9 @@ interface FileRoutesByTo {
   '/about': typeof AboutLazyRoute
   '/achievements': typeof AchievementsLazyRoute
   '/contactUs': typeof ContactUsLazyRoute
+  '/facilities': typeof FacilitiesLazyRoute
   '/highlights': typeof HighlightsLazyRoute
+  '/researchCenter': typeof ResearchCenterLazyRoute
 }
 
 interface FileRoutesById {
@@ -114,15 +146,38 @@ interface FileRoutesById {
   '/about': typeof AboutLazyRoute
   '/achievements': typeof AchievementsLazyRoute
   '/contactUs': typeof ContactUsLazyRoute
+  '/facilities': typeof FacilitiesLazyRoute
   '/highlights': typeof HighlightsLazyRoute
+  '/researchCenter': typeof ResearchCenterLazyRoute
 }
 
 interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/achievements' | '/contactUs' | '/highlights'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/achievements'
+    | '/contactUs'
+    | '/facilities'
+    | '/highlights'
+    | '/researchCenter'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/achievements' | '/contactUs' | '/highlights'
-  id: '/' | '/about' | '/achievements' | '/contactUs' | '/highlights'
+  to:
+    | '/'
+    | '/about'
+    | '/achievements'
+    | '/contactUs'
+    | '/facilities'
+    | '/highlights'
+    | '/researchCenter'
+  id:
+    | '/'
+    | '/about'
+    | '/achievements'
+    | '/contactUs'
+    | '/facilities'
+    | '/highlights'
+    | '/researchCenter'
   fileRoutesById: FileRoutesById
 }
 
@@ -131,7 +186,9 @@ interface RootRouteChildren {
   AboutLazyRoute: typeof AboutLazyRoute
   AchievementsLazyRoute: typeof AchievementsLazyRoute
   ContactUsLazyRoute: typeof ContactUsLazyRoute
+  FacilitiesLazyRoute: typeof FacilitiesLazyRoute
   HighlightsLazyRoute: typeof HighlightsLazyRoute
+  ResearchCenterLazyRoute: typeof ResearchCenterLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -139,7 +196,9 @@ const rootRouteChildren: RootRouteChildren = {
   AboutLazyRoute: AboutLazyRoute,
   AchievementsLazyRoute: AchievementsLazyRoute,
   ContactUsLazyRoute: ContactUsLazyRoute,
+  FacilitiesLazyRoute: FacilitiesLazyRoute,
   HighlightsLazyRoute: HighlightsLazyRoute,
+  ResearchCenterLazyRoute: ResearchCenterLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -158,7 +217,9 @@ export const routeTree = rootRoute
         "/about",
         "/achievements",
         "/contactUs",
-        "/highlights"
+        "/facilities",
+        "/highlights",
+        "/researchCenter"
       ]
     },
     "/": {
@@ -173,8 +234,14 @@ export const routeTree = rootRoute
     "/contactUs": {
       "filePath": "contactUs.lazy.tsx"
     },
+    "/facilities": {
+      "filePath": "facilities.lazy.tsx"
+    },
     "/highlights": {
       "filePath": "highlights.lazy.tsx"
+    },
+    "/researchCenter": {
+      "filePath": "researchCenter.lazy.tsx"
     }
   }
 }

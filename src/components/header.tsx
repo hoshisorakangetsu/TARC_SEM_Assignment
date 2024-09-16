@@ -3,10 +3,12 @@ import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 
-const linkActiveClass = "[&.active]:font-bold";
-
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const linkNavClass = clsx(
+    "[&.active]:font-bold block px-2",
+    isScrolled ? "text-black" : "text-white"
+  );
 
   useEffect(() => {
     const scrollListener = () => {
@@ -30,7 +32,7 @@ export default function Header() {
   return (
     <div
       className={clsx(
-        "flex w-full justify-between items-center pr-4 fixed top-0 transition-colors",
+        "flex w-full justify-between items-center pr-4 fixed top-0 transition-colors z-[999]",
         {
           "bg-primary": isScrolled,
         }
@@ -44,32 +46,40 @@ export default function Header() {
       <nav className="flex h-min">
         <ul className="flex gap-2">
           <li>
-            <Link to="/" className={linkActiveClass}>
+            <Link to="/" className={linkNavClass}>
               Home
             </Link>
           </li>
           <li>
-            <Link to="/about" className={linkActiveClass}>
+            <Link to="/about" className={linkNavClass}>
               About Us
             </Link>
           </li>
           {/* moved accreditation tab to nest inside programmes tab */}
-          <li>Programmes</li>
-          {/* moved research center tab to nest inside facilities tab */}
-          <li>Facilities</li>
-          <li>People</li>
+          <li className={linkNavClass}>Programmes</li>
           <li>
-            <Link to="/highlights" className={linkActiveClass}>
+            <Link to="/facilities" className={linkNavClass}>
+              Facilities
+            </Link>
+          </li>
+          <li className={linkNavClass}>People</li>
+          <li>
+            <Link to="/highlights" className={linkNavClass}>
               Highlights
             </Link>
           </li>
           <li>
-            <Link to="/achievements" className={linkActiveClass}>
+            <Link to="/achievements" className={linkNavClass}>
               Achievements
             </Link>
           </li>
           <li>
-            <Link to="/contactUs" className={linkActiveClass}>
+            <Link to="/researchCenter" className={linkNavClass}>
+              Research
+            </Link>
+          </li>
+          <li>
+            <Link to="/contactUs" className={linkNavClass}>
               Contact Us
             </Link>
           </li>
