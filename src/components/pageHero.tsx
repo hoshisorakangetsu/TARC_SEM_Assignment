@@ -7,7 +7,7 @@ export default function PageHero({ img, text }: { img: string; text: string }) {
         aria-hidden
       />
       <div className="flex absolute top-0 bottom-0 left-0 right-0 bg-black/30">
-        <div className="flex justify-center items-center w-full h-full text-primary text-4xl font-bold font-[Lato,Arial] text-center">
+        <div className="flex justify-center items-center w-full h-full text-primaryText text-4xl font-bold font-[Lato,Arial] text-center">
           {text}
         </div>
       </div>

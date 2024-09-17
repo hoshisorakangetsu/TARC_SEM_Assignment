@@ -184,7 +184,7 @@ function Index() {
           <img src={MDPDTILogo} alt="MD_PDTI Logo" aria-hidden />
           <div className="text-textBase text-2xl font-bold flex items-center justify-center">
             <p className="text-center">
-              <span className="text-primary">FOCS</span> is in TOP 5 of Highest
+              <span className="text-primaryText">FOCS</span> is in TOP 5 of Highest
               Graduates and Graduates' Salary above RM4,000
             </p>
           </div>

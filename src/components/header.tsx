@@ -30,11 +30,11 @@ export default function Header() {
   });
 
   return (
-    <div
+    <header
       className={clsx(
         "flex w-full justify-between items-center pr-4 fixed top-0 transition-colors z-[999]",
         {
-          "bg-primary": isScrolled,
+          "bg-primaryBg": isScrolled,
         }
       )}
     >
@@ -85,6 +85,6 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-    </div>
+    </header>
   );
 }
