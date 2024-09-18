@@ -6,7 +6,7 @@ import { fileURLToPath, URL } from "node:url";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [TanStackRouterVite(), react()],
-  assetsInclude: ['**/*.jpg'],
+  assetsInclude: ["**/*.jpg", "**/*.JPG"],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
