@@ -12,10 +12,10 @@ function ArrowDownIcon({ className }: { className?: string }) {
       className={className}
     >
       <g transform="translate(9.7,12) rotate(45)">
-        <path d="M-4.2 0 L4.2 0" stroke-width="2"></path>
+        <path d="M-4.2 0 L4.2 0" strokeWidth="2"></path>
       </g>
       <g transform="translate(14.3,12) rotate(-45)">
-        <path d="M-4.2 0 L4.2 0" stroke-width="2"></path>
+        <path d="M-4.2 0 L4.2 0" strokeWidth="2"></path>
       </g>
     </svg>
   );
