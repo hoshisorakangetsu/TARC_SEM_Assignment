@@ -5,14 +5,15 @@ import MDPDTILogo from "@/assets/MD_PDTI-fc.png";
 import Partners from "@/assets/partners.png";
 import Achievement1 from "@/assets/achievement1.png";
 import Achievement2 from "@/assets/achievement2.png";
-import TSKong from "@/assets/alumni_ts_kong.png"
-import MrLim from "@/assets/alumni_mr_lim.png"
-import MrFong from "@/assets/alumni_mr_fong.png"
+import TSKong from "@/assets/alumni_ts_kong.png";
+import MrLim from "@/assets/alumni_mr_lim.png";
+import MrFong from "@/assets/alumni_mr_fong.png";
 import PageHero from "@/components/pageHero";
 import { ReactNode } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import classes from "./index.module.css";
+import EnrollBtn from "@/components/enrollBtn";
 
 export const Route = createLazyFileRoute("/")({
   component: Index,
@@ -146,20 +147,20 @@ function Index() {
       img: TSKong,
       name: "Ts. Kong Wai Keat",
       title: "OT Security Consultant",
-      company: "YNY Technology Sdn. Bhd."
+      company: "YNY Technology Sdn. Bhd.",
     },
     {
       img: MrLim,
       name: "Mr. Lim Yu Jie",
       title: "Technical Consulting Engineer",
-      company: "Cisco Malaysia"
+      company: "Cisco Malaysia",
     },
     {
       img: MrFong,
       name: "Mr. Fong Choong Fook",
       title: "Founder & Executive",
-      company: "Chairman of LGMS Berhad"
-    }
+      company: "Chairman of LGMS Berhad",
+    },
   ];
 
   return (
@@ -184,8 +185,8 @@ function Index() {
           <img src={MDPDTILogo} alt="MD_PDTI Logo" aria-hidden />
           <div className="text-textBase text-2xl font-bold flex items-center justify-center">
             <p className="text-center">
-              <span className="text-primaryText">FOCS</span> is in TOP 5 of Highest
-              Graduates and Graduates' Salary above RM4,000
+              <span className="text-primaryText">FOCS</span> is in TOP 5 of
+              Highest Graduates and Graduates' Salary above RM4,000
             </p>
           </div>
         </div>
@@ -230,11 +231,14 @@ function Index() {
         {/* #region alumni */}
         <LeftRightCol title="Alumni" subtitle="TESTIMONIALS">
           <div className="flex gap-6">
-            {alumniData.map(a => <AlumniCard {...a} key={a.name} />)}
+            {alumniData.map((a) => (
+              <AlumniCard {...a} key={a.name} />
+            ))}
           </div>
         </LeftRightCol>
         {/* #endregion */}
       </div>
+      <EnrollBtn />
     </div>
   );
 }

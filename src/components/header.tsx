@@ -39,7 +39,7 @@ function NestedLink(props: LinkProps & { title: string; className?: string }) {
         />
       </Link>
       {isMouseOver && (
-        <div className="absolute top-full left-0 bg-primaryBg p-2 min-w-full">
+        <div className="absolute top-full left-0 bg-primaryBg p-2 min-w-full shadow-md">
           {props.children as ReactNode}
         </div>
       )}

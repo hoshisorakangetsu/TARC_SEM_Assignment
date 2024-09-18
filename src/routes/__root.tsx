@@ -7,7 +7,7 @@ export const Route = createRootRoute({
   component: () => (
     <>
       <Header />
-      <main>
+      <main className="min-h-dvh">
         <Outlet />
       </main>
       <Footer />
