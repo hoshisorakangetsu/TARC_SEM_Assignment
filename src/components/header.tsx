@@ -109,7 +109,7 @@ export default function Header() {
     return () => {
       document.removeEventListener("scroll", scrollListener);
     };
-  });
+  }, []);
 
   return (
     <header
