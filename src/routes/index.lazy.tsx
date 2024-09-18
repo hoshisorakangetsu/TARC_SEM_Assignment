@@ -202,16 +202,6 @@ function Index() {
         {/* #endregion */}
         <hr className="my-8 bg-black/10" />
         {/* #region achievements */}
-        <div className="grid grid-cols-[3fr,9fr]">
-          <div className="flex flex-col text-textBase">
-            <span className="text-4xl font-bold leading-relaxed">Partners</span>
-            <span className="font-bold text-4xl">_____________</span>
-            <span className="text-lg mt-2">STAFF & STUDENTS</span>
-          </div>
-          <div>
-            <img src={Partners} alt="Partners" />
-          </div>
-        </div>
         <LeftRightCol title="Achievements" subtitle="STAFF & STUDENTS">
           <div className="grid grid-cols-2 gap-4 p-2">
             <img src={Achievement1} alt="Achievement 1" />
