@@ -138,105 +138,107 @@ export default function Header() {
             </Link>
           </li>
           {/* moved accreditation tab to nest inside programmes tab */}
-          <NestedLink title="Programmes" className={linkNavClass}>
-            <div className="grid grid-flow-row">
-              <Link
-                to="/about"
-                className="[&.active]:font-bold text-black text-nowrap px-2 py-1"
-              >
-                Foundation
-              </Link>
-              <NestedLinkLv2
-                title="Diploma"
-                titleClassName="[&.active]:font-bold text-black"
-                className="p-2"
-              >
-                <div className="flex flex-col gap-2 pl-3 pt-2 max-w-[25ch]">
-                  <Link
-                    to="/about"
-                    className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
-                    title="Diploma in Computer Science"
-                  >
-                    Diploma in Computer Science
-                  </Link>
-                  <Link
-                    to="/about"
-                    className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
-                    title="Diploma in Computer Science"
-                  >
-                    Diploma in Computer Science
-                  </Link>
-                  <Link
-                    to="/about"
-                    className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
-                    title="Diploma in Computer Science"
-                  >
-                    Diploma in Computer Science
-                  </Link>
-                  <Link
-                    to="/about"
-                    className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
-                    title="Diploma in Computer Science"
-                  >
-                    Diploma in Computer Science
-                  </Link>
-                </div>
-              </NestedLinkLv2>
-              <NestedLinkLv2
-                title="Bachelor Degree"
-                titleClassName="[&.active]:font-bold text-black"
-                className="p-2"
-              >
-                <div className="flex flex-col gap-2 pl-3 pt-2 max-w-[25ch]">
-                  <Link
-                    to="/about"
-                    className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
-                    title="Bachelor of Computer Science (Honours) in Interactive Software Technology"
-                  >
-                    Bachelor of Computer Science (Honours) in Interactive
-                    Software Technology
-                  </Link>
-                  <Link
-                    to="/about"
-                    className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
-                    title="Bachelor of Computer Science (Honours) in Interactive Software Technology"
-                  >
-                    Bachelor of Computer Science (Honours) in Interactive
-                    Software Technology
-                  </Link>
-                  <Link
-                    to="/about"
-                    className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
-                    title="Bachelor of Computer Science (Honours) in Interactive Software Technology"
-                  >
-                    Bachelor of Computer Science (Honours) in Interactive
-                    Software Technology
-                  </Link>
-                  <Link
-                    to="/about"
-                    className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
-                    title="Bachelor of Computer Science (Honours) in Interactive Software Technology"
-                  >
-                    Bachelor of Computer Science (Honours) in Interactive
-                    Software Technology
-                  </Link>
-                </div>
-              </NestedLinkLv2>
-              <Link
-                to="/about"
-                className="[&.active]:font-bold text-black text-nowrap px-2 py-1"
-              >
-                Post Graduate
-              </Link>
-              <a
-                href="https://www.tarc.edu.my/mqa/programmes-accreditated-by-mqa/kuala-lumpur-main-campus/faculty-of-computing-and-information-technology/"
-                target="_blank"
-                className="text-black text-nowrap px-2 py-1"
-              >
-                Accreditation Status
-              </a>
-            </div>
-          </NestedLink>
+          <li>
+            <NestedLink title="Programmes" className={linkNavClass}>
+              <div className="grid grid-flow-row">
+                <Link
+                  to="/about"
+                  className="[&.active]:font-bold text-black text-nowrap px-2 py-1"
+                >
+                  Foundation
+                </Link>
+                <NestedLinkLv2
+                  title="Diploma"
+                  titleClassName="[&.active]:font-bold text-black"
+                  className="px-2 py-1"
+                >
+                  <div className="flex flex-col gap-2 pl-3 pt-2 max-w-[25ch]">
+                    <Link
+                      to="/about"
+                      className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
+                      title="Diploma in Computer Science"
+                    >
+                      Diploma in Computer Science
+                    </Link>
+                    <Link
+                      to="/about"
+                      className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
+                      title="Diploma in Computer Science"
+                    >
+                      Diploma in Computer Science
+                    </Link>
+                    <Link
+                      to="/about"
+                      className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
+                      title="Diploma in Computer Science"
+                    >
+                      Diploma in Computer Science
+                    </Link>
+                    <Link
+                      to="/about"
+                      className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
+                      title="Diploma in Computer Science"
+                    >
+                      Diploma in Computer Science
+                    </Link>
+                  </div>
+                </NestedLinkLv2>
+                <NestedLinkLv2
+                  title="Bachelor Degree"
+                  titleClassName="[&.active]:font-bold text-black"
+                  className="px-2 py-1"
+                >
+                  <div className="flex flex-col gap-2 pl-3 pt-2 max-w-[25ch]">
+                    <Link
+                      to="/about"
+                      className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
+                      title="Bachelor of Computer Science (Honours) in Interactive Software Technology"
+                    >
+                      Bachelor of Computer Science (Honours) in Interactive
+                      Software Technology
+                    </Link>
+                    <Link
+                      to="/about"
+                      className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
+                      title="Bachelor of Computer Science (Honours) in Interactive Software Technology"
+                    >
+                      Bachelor of Computer Science (Honours) in Interactive
+                      Software Technology
+                    </Link>
+                    <Link
+                      to="/about"
+                      className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
+                      title="Bachelor of Computer Science (Honours) in Interactive Software Technology"
+                    >
+                      Bachelor of Computer Science (Honours) in Interactive
+                      Software Technology
+                    </Link>
+                    <Link
+                      to="/about"
+                      className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
+                      title="Bachelor of Computer Science (Honours) in Interactive Software Technology"
+                    >
+                      Bachelor of Computer Science (Honours) in Interactive
+                      Software Technology
+                    </Link>
+                  </div>
+                </NestedLinkLv2>
+                <Link
+                  to="/about"
+                  className="[&.active]:font-bold text-black text-nowrap px-2 py-1"
+                >
+                  Post Graduate
+                </Link>
+                <a
+                  href="https://www.tarc.edu.my/mqa/programmes-accreditated-by-mqa/kuala-lumpur-main-campus/faculty-of-computing-and-information-technology/"
+                  target="_blank"
+                  className="text-black text-nowrap px-2 py-1"
+                >
+                  Accreditation Status
+                </a>
+              </div>
+            </NestedLink>
+          </li>
           <li>
             <Link to="/facilities" className={linkNavClass}>
               Facilities
