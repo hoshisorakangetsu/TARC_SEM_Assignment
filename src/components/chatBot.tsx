@@ -290,6 +290,7 @@ export default function ChatBot({ onClose }: { onClose?: () => void }) {
             className="p-2 grow outline-none border border-black focus:border-primaryBg rounded-md"
             value={currentMessage}
             onChange={(e) => setCurrentMessage(e.currentTarget.value)}
+            onKeyDown={(e) => e.key === "Enter" && userSendMessage()}
           />
           <button
             className="bg-primaryBg px-4 rounded-md"
