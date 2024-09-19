@@ -21,7 +21,7 @@ export default function Modal({
           onClick={() => onClose()}
         >
           <motion.div
-            className="max-w-2/4 min-w-[25%] bg-white rounded-lg"
+            className="max-w-2/4 min-w-[25%] bg-white rounded-lg overflow-hidden"
             onClick={(e) => e.stopPropagation()}
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -36,7 +36,7 @@ export default function Modal({
                 ✕
               </button>
             </div>
-            <div className={className}>{children}</div>
+            <div className={`max-h-[520px] ${className}`}>{children}</div>
           </motion.div>
         </motion.div>
       )}

@@ -144,6 +144,7 @@ export default function Header() {
                         className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
                         title={el.title}
                         params={{ id: i.toString() }}
+                        key={i}
                       >
                         {el.title}
                       </Link>
@@ -163,6 +164,7 @@ export default function Header() {
                         params={{ id: i.toString() }}
                         className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
                         title={el.title}
+                        key={i}
                       >
                         {el.title}
                       </Link>
@@ -174,6 +176,13 @@ export default function Header() {
                   className="[&.active]:font-bold text-black text-nowrap px-2 py-1"
                 >
                   Post Graduate
+                </Link>
+                <Link
+                  to="/courses/compare"
+                  className="[&.active]:font-bold text-black text-nowrap px-2 py-1"
+                  search={{ programmes: [] }}
+                >
+                  Compare Programmes
                 </Link>
                 <a
                   href="https://www.tarc.edu.my/mqa/programmes-accreditated-by-mqa/kuala-lumpur-main-campus/faculty-of-computing-and-information-technology/"
