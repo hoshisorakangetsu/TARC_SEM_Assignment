@@ -196,112 +196,172 @@ function ScholarshipInteractive() {
 const aiResponseDict: { [k: string]: Omit<AiMessage, "id"> } = {
   book: {
     by: "RESPONDER",
-    content: "As you wish",
+    content: "Your booking has been confirmed! The staff is ready to assist you.",
     time: new Date().toLocaleTimeString(),
     interactive: SchedulerInteractive,
   },
   tour: {
       by: "RESPONDER",
-      content: "As you wish",
+      content: "Your tour is scheduled! The staff will be ready to guide you.",
       time: new Date().toLocaleTimeString(),
       interactive: SchedulerInteractive,
-  },
+    },
   visit: {
       by: "RESPONDER",
-      content: "As you wish",
+      content: "Visit confirmed! We're excited to have you. The staff is available.",
       time: new Date().toLocaleTimeString(),
       interactive: SchedulerInteractive,
-  },
+    },
   appointment: {
       by: "RESPONDER",
-      content: "As you wish",
+      content: "Your appointment has been arranged. The staff will meet you then.",
       time: new Date().toLocaleTimeString(),
       interactive: SchedulerInteractive,
-  },
+    },
   reserve: {
       by: "RESPONDER",
-      content: "As you wish",
+      content: "Reservation successful! The staff is ready to accommodate you.",
       time: new Date().toLocaleTimeString(),
       interactive: SchedulerInteractive,
-  },
-  slot: {
-      by: "RESPONDER",
-      content: "As you wish",
-      time: new Date().toLocaleTimeString(),
-      interactive: SchedulerInteractive,
-  },
+    },
   schedule: {
       by: "RESPONDER",
-      content: "As you wish",
+      content: "The schedule is set! Our staff will be ready to assist you.",
       time: new Date().toLocaleTimeString(),
       interactive: SchedulerInteractive,
-  },
+    },
   consultation: {
       by: "RESPONDER",
-      content: "As you wish",
+      content: "Your consultation is confirmed. The staff is prepared for your session.",
       time: new Date().toLocaleTimeString(),
       interactive: SchedulerInteractive,
-  },
+    },
   enroll: {
       by: "RESPONDER",
-      content: "As you wish",
+      content: "Enrollment is confirmed! Our team will assist you moving forward.",
       time: new Date().toLocaleTimeString(),
       interactive: SchedulerInteractive,
-  },
+    },
   meeting: {
       by: "RESPONDER",
-      content: "As you wish",
+      content: "Your meeting is scheduled. The staff is looking forward to assisting you.",
       time: new Date().toLocaleTimeString(),
       interactive: SchedulerInteractive,
-  },    
-  scholarship: {
-    by: "RESPONDER",
-    content: "We offer various scholarships for deserving students.",
-    time: new Date().toLocaleTimeString(),
-    interactive: ScholarshipInteractive,
-  },
-  "funding": {
-    by: "RESPONDER",
-    content: "We offer various scholarships for deserving students.",
-    time: new Date().toLocaleTimeString(),
-    interactive: ScholarshipInteractive,
-  },
+    },
+    scholarship: {
+      by: "RESPONDER",
+      content: "We offer a variety of scholarships for qualified students. Learn more today!",
+      time: new Date().toLocaleTimeString(),
+      interactive: ScholarshipInteractive,
+    },
+  funding: {
+      by: "RESPONDER",
+      content: "Discover our funding options available for students. Explore the details now!",
+      time: new Date().toLocaleTimeString(),
+      interactive: ScholarshipInteractive,
+    },
   "financial aid": {
-    by: "RESPONDER",
-    content: "We offer various scholarships for deserving students.",
-    time: new Date().toLocaleTimeString(),
-    interactive: ScholarshipInteractive,
-  },
+      by: "RESPONDER",
+      content: "Need financial assistance? We have aid packages for deserving students.",
+      time: new Date().toLocaleTimeString(),
+      interactive: ScholarshipInteractive,
+    },
   bursary: {
-    by: "RESPONDER",
-    content: "We offer various scholarships for deserving students.",
-    time: new Date().toLocaleTimeString(),
-    interactive: ScholarshipInteractive,
-  },
+      by: "RESPONDER",
+      content: "Apply for bursaries to help cover your tuition and other expenses.",
+      time: new Date().toLocaleTimeString(),
+      interactive: ScholarshipInteractive,
+    },
   award: {
-    by: "RESPONDER",
-    content: "We offer various scholarships for deserving students.",
-    time: new Date().toLocaleTimeString(),
-    interactive: ScholarshipInteractive,
-  },
+      by: "RESPONDER",
+      content: "Our awards recognize academic excellence. Check if you're eligible!",
+      time: new Date().toLocaleTimeString(),
+      interactive: ScholarshipInteractive,
+    },
   "tuition fee": {
-    by: "RESPONDER",
-    content: "We offer various scholarships for deserving students.",
-    time: new Date().toLocaleTimeString(),
-    interactive: ScholarshipInteractive,
-  },
+      by: "RESPONDER",
+      content: "We provide support to help manage your tuition fees. Learn how to apply.",
+      time: new Date().toLocaleTimeString(),
+      interactive: ScholarshipInteractive,
+    },
   "student loan": {
-    by: "RESPONDER",
-    content: "We offer various scholarships for deserving students.",
-    time: new Date().toLocaleTimeString(),
-    interactive: ScholarshipInteractive,
-  },
+      by: "RESPONDER",
+      content: "We offer student loans to help finance your education. Find out more.",
+      time: new Date().toLocaleTimeString(),
+      interactive: ScholarshipInteractive,
+    },
   "merit scholarship": {
+      by: "RESPONDER",
+      content: "Merit scholarships are available for students with outstanding grades. Apply now!",
+      time: new Date().toLocaleTimeString(),
+      interactive: ScholarshipInteractive,
+    },
+
+  hello: {
     by: "RESPONDER",
-    content: "We offer various scholarships for deserving students.",
+    content: "Hello! How can I assist you today?",
     time: new Date().toLocaleTimeString(),
-    interactive: ScholarshipInteractive,
-  }
+    },
+  hi: {
+      by: "RESPONDER",
+      content: "Hi there! What can I do for you today?",
+      time: new Date().toLocaleTimeString(),
+    },
+  hey: {
+      by: "RESPONDER",
+      content: "Hey! How can I help you?",
+      time: new Date().toLocaleTimeString(),
+    },
+  greetings: {
+      by: "RESPONDER",
+      content: "Greetings! How may I assist you?",
+      time: new Date().toLocaleTimeString(),
+    },
+  "good morning": {
+      by: "RESPONDER",
+      content: "Good morning! How can I assist you today?",
+      time: new Date().toLocaleTimeString(),
+    },
+  "good afternoon": {
+      by: "RESPONDER",
+      content: "Good afternoon! How can I help?",
+      time: new Date().toLocaleTimeString(),
+    },
+  "good evening": {
+      by: "RESPONDER",
+      content: "Good evening! How may I assist you today?",
+      time: new Date().toLocaleTimeString(),
+    },
+  "how are you": {
+      by: "RESPONDER",
+      content: "I’m doing great! How about you?",
+      time: new Date().toLocaleTimeString(),
+    },
+  "bye": {
+      by: "RESPONDER",
+      content: "Goodbye! Have a great day ahead!",
+      time: new Date().toLocaleTimeString(),
+    },
+  "thank you": {
+      by: "RESPONDER",
+      content: "You're welcome! Let me know if you need anything else.",
+      time: new Date().toLocaleTimeString(),
+    },
+    yo: {
+      by: "RESPONDER",
+      content: "Yo! How's it going? Need any help?",
+      time: new Date().toLocaleTimeString(),
+    },
+    morning: {
+        by: "RESPONDER",
+        content: "Morning! How can I assist you today?",
+        time: new Date().toLocaleTimeString(),
+      },
+    thanks: {
+      by: "RESPONDER",
+      content: "You're welcome! If you need anything else, feel free to ask.",
+      time: new Date().toLocaleTimeString(),
+    }
 
 };
 
@@ -328,6 +388,7 @@ export default function ChatBot({ onClose }: { onClose?: () => void }) {
   const chatMessageBox = useRef(null);
 
   const userSendMessage = useCallback(() => {
+    if (currentMessage.trim() === "") return;
     if (messageType === "AI") {
       const aiResponse = getAiResponse(currentMessage);
       setAiMessage([
