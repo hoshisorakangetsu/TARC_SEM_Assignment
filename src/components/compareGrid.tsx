@@ -17,8 +17,7 @@ function FeatureRender({
   featureName: string;
   v: unknown;
 }) {
-  // for auto complete only, makes life easier :))
-  switch (featureName as keyof DiplomaCourse) {
+  switch (featureName) {
     case "campus":
       return (
         <ul className="list-disc list-inside pl-2 text-left">
@@ -92,8 +91,7 @@ function FeatureRender({
       );
     }
     default:
-      // @ts-expect-error v is of type unknown
-      return <div>{v.toString()}</div>;
+      return <div>{v ? v.toString() : "-"}</div>;
   }
 }
 
