@@ -103,18 +103,51 @@ const ScholarshipCard = ({
 
 const scholarships: ScholarshipData[] = [
   {
-    title: "Hello",
-    description: "Test Scholarship",
-    requirement: ["10000 A"],
-    link: "https://focs.tarc.edu.my",
+    title: "APU Malaysian Scholarships & Merit Awards 2024",
+    description:
+      "Offered by Asia Pacific University of Technology & Innovation (APU), this scholarship is available for undergraduate students based on academic merit.",
+    requirement: [
+      "SPM 10 A+: 100% Discount (Interview Required)",
+      "SPM 9 A's: 50% Discount",
+      "SPM 8 A's: 40% Discount",
+      "SPM 7 A's: 30% Discount",
+      "SPM 6 A's: 20% Discount",
+      "SPM 4-5 A's: 10% Discount",
+    ],
+    link: "https://www.apu.edu.my/meritscholarships",
   },
   {
-    title: "Hello",
+    title: "TAR UMT Merit Scholarship 2024",
     description:
-      "Test Scholarship with very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very long description",
-    requirement: ["10000 A"],
-    link: "https://focs.tarc.edu.my",
+      "Tunku Abdul Rahman University of Management and Technology (TARUMT) offers merit-based scholarships to students pursuing degrees at their institution.",
+    requirement: [
+      "SPM: Minimum 8A+/A or O Level: Minimum 8As: 100% Discount",
+      "SPM: 8As or O Level: 7As: 50% Discount",
+      "SPM: 7As or O Level: 6As: 25% Discount",
+      "SPM: 6As: 20% Discount (Foundation Programmes only)",
+      "SPM: 5As: 15% Discount (Foundation Programmes only)"
+    ],
+    link: "https://www.tarc.edu.my/admissions/a/merit-scholarship/",
   },
+  {
+    title: "Shell Malaysia Scholarship 2024",
+    description:
+      "Shell offers scholarships for students pursuing higher education, focusing on fields like engineering, geosciences, and commercial.",
+    requirement: [
+      "SPM: Minimum 8As",
+      "O-Level: Excellent grades (A*/A)"
+    ],
+    link: "https://www.shell.com.my/careers/students-and-graduates/scholarships.html",
+  },
+  {
+    title: "Bank Negara Malaysia Scholarships",
+    description:
+      "A prestigious scholarship offered by Bank Negara Malaysia for undergraduate students in Malaysia.",
+    requirement: [
+      "SPM: Minimum 8As"
+    ],
+    link: "https://www.bnm.gov.my/careers/scholarships",
+  }
 ];
 
 function ScholarshipInteractive() {
@@ -161,18 +194,66 @@ function ScholarshipInteractive() {
 }
 
 const aiResponseDict: { [k: string]: Omit<AiMessage, "id"> } = {
-  "book a slot": {
+  book: {
     by: "RESPONDER",
     content: "As you wish",
     time: new Date().toLocaleTimeString(),
     interactive: SchedulerInteractive,
   },
-  sched: {
-    by: "RESPONDER",
-    content: "As you wish",
-    time: new Date().toLocaleTimeString(),
-    interactive: SchedulerInteractive,
+  tour: {
+      by: "RESPONDER",
+      content: "As you wish",
+      time: new Date().toLocaleTimeString(),
+      interactive: SchedulerInteractive,
   },
+  visit: {
+      by: "RESPONDER",
+      content: "As you wish",
+      time: new Date().toLocaleTimeString(),
+      interactive: SchedulerInteractive,
+  },
+  appointment: {
+      by: "RESPONDER",
+      content: "As you wish",
+      time: new Date().toLocaleTimeString(),
+      interactive: SchedulerInteractive,
+  },
+  reserve: {
+      by: "RESPONDER",
+      content: "As you wish",
+      time: new Date().toLocaleTimeString(),
+      interactive: SchedulerInteractive,
+  },
+  slot: {
+      by: "RESPONDER",
+      content: "As you wish",
+      time: new Date().toLocaleTimeString(),
+      interactive: SchedulerInteractive,
+  },
+  schedule: {
+      by: "RESPONDER",
+      content: "As you wish",
+      time: new Date().toLocaleTimeString(),
+      interactive: SchedulerInteractive,
+  },
+  consultation: {
+      by: "RESPONDER",
+      content: "As you wish",
+      time: new Date().toLocaleTimeString(),
+      interactive: SchedulerInteractive,
+  },
+  enroll: {
+      by: "RESPONDER",
+      content: "As you wish",
+      time: new Date().toLocaleTimeString(),
+      interactive: SchedulerInteractive,
+  },
+  meeting: {
+      by: "RESPONDER",
+      content: "As you wish",
+      time: new Date().toLocaleTimeString(),
+      interactive: SchedulerInteractive,
+  },    
   scholarship: {
     by: "RESPONDER",
     content: "As you wish",
