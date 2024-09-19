@@ -19,7 +19,20 @@ function DiplomaDetail() {
   }
   return (
     <div className="min-h-dvh">
-      <PageHero img={DiplomaBanner} text={DiplomaCourses[index].title} />
+      <div className="relative">
+        <PageHero img={DiplomaBanner} text={DiplomaCourses[index].title} />
+        <button
+          className="absolute bottom-4 right-4 bg-primaryBg px-2 py-1 rounded-md"
+          onClick={() => {
+            navigate({
+              to: "/courses/compare",
+              search: { programmes: [{ type: "DIPLOMA", id: index }] },
+            });
+          }}
+        >
+          Compare
+        </button>
+      </div>
       <div className="p-16">
         {/* #region overview */}
         <p className="text-lg font-bold">Programme Overview</p>

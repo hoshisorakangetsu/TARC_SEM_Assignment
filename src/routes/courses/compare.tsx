@@ -3,6 +3,9 @@ import HomeBanner from "@/assets/focs_home_banner.jpg";
 import PageHero from "@/components/pageHero";
 import CompareGrid from "@/components/compareGrid";
 import { DegreeCourses, DiplomaCourses } from "@/data";
+import { useState } from "react";
+import ArrowDownIcon from "@/components/arrowDownIcon";
+import clsx from "clsx";
 
 type ProgrammeType = "DIPLOMA" | "DEGREE";
 
@@ -74,10 +77,8 @@ function Compare() {
       return { ...p };
     }
   });
-  console.log(
-    compareObjects,
-    compareObjects.map((p) => console.log(p))
-  );
+
+  const [expandCompareSelection, setExpandCompareSelection] = useState(true);
 
   return (
     <div className="min-h-dvh">
@@ -87,100 +88,135 @@ function Compare() {
         {/* maximum compare 3 programmes */}
         {/* #region select comparison */}
         <div className="flex flex-col bg-primaryBg/30 p-4 rounded-xl mb-8">
-          <span className="text-left font-bold text-3xl mb-6">Comparing Programmes</span>
-          <div className="flex flex-col gap-4">
-            <ProgrammeSelector
-              value={`${compareObjects[0].type.toLowerCase()};${compareObjects[0].id}`}
-              onChange={(v) =>
-                navigate({
-                  to: "/courses/compare",
-                  search: {
-                    programmes: (() => {
-                      const [...programmes] = search.programmes;
-                      const [type, id] = v.split(";");
-                      programmes[0] = {
-                        type: type.toUpperCase() as ProgrammeType,
-                        id: parseInt(id),
-                      };
-                      return programmes;
-                    })(),
-                  },
-                })
-              }
-            />
-            <span className="text-center font-bold">VS</span>
-            <ProgrammeSelector
-              value={`${compareObjects[1].type.toLowerCase()};${compareObjects[1].id}`}
-              onChange={(v) =>
-                navigate({
-                  to: "/courses/compare",
-                  search: {
-                    programmes: (() => {
-                      const [...programmes] = search.programmes;
-                      const [type, id] = v.split(";");
-                      programmes[1] = {
-                        type: type.toUpperCase() as ProgrammeType,
-                        id: parseInt(id),
-                      };
-                      return programmes;
-                    })(),
-                  },
-                })
-              }
-            />
-            {compareObjects.length === 3 ? (
-              <div className="flex flex-col gap-2 bg-primaryBg/50 p-2 rounded-lg">
-                <div className="flex justify-center">
-                  <span className="text-center font-bold grow">VS</span>
-                  <button className="ml-auto mr-0 text-black font-bold pr-2" onClick={() => navigate({
-                      to: "/courses/compare",
-                      search: {
-                        programmes: [search.programmes[0], search.programmes[1]],
-                      },
-                    })}>✕</button>
-                </div>
-                <ProgrammeSelector
-                  value={`${compareObjects[2].type.toLowerCase()};${compareObjects[2].id}`}
-                  onChange={(v) =>
-                    navigate({
-                      to: "/courses/compare",
-                      search: {
-                        programmes: (() => {
-                          const [...programmes] = search.programmes;
-                          const [type, id] = v.split(";");
-                          programmes[2] = {
-                            type: type.toUpperCase() as ProgrammeType,
-                            id: parseInt(id),
-                          };
-                          return programmes;
-                        })(),
-                      },
-                    })
-                  }
-                />
-              </div>
-            ) : (
-              <button
-                className="bg-primaryBg rounded-md p-1 text-lg"
-                onClick={() =>
+          <div
+            className={clsx(
+              "flex items-center justify-between cursor-pointer transition-all",
+              { "mb-6": expandCompareSelection }
+            )}
+            onClick={() => setExpandCompareSelection(!expandCompareSelection)}
+          >
+            <span className="text-left font-bold text-3xl">
+              Comparing Programmes
+            </span>
+            <button
+              className={clsx(
+                "w-8 h-8 transition-transform",
+                expandCompareSelection ? "rotate-180" : "rotate-0"
+              )}
+            >
+              <ArrowDownIcon />
+            </button>
+          </div>
+          <div
+            className={clsx(
+              "grid overflow-hidden transition-all",
+              expandCompareSelection ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+            )}
+          >
+            <div className="flex flex-col gap-4 min-h-0">
+              <ProgrammeSelector
+                value={`${compareObjects[0].type.toLowerCase()};${compareObjects[0].id}`}
+                onChange={(v) =>
                   navigate({
                     to: "/courses/compare",
                     search: {
                       programmes: (() => {
                         const [...programmes] = search.programmes;
-                        programmes[2] = {
-                          type: "DIPLOMA", // anything will do as long as id is -1
-                          id: -1,
+                        const [type, id] = v.split(";");
+                        programmes[0] = {
+                          type: type.toUpperCase() as ProgrammeType,
+                          id: parseInt(id),
                         };
                         return programmes;
                       })(),
                     },
                   })
                 }
-              >
-                + Add One More Comparison
-              </button>
-            )}
+              />
+              <span className="text-center font-bold">VS</span>
+              <ProgrammeSelector
+                value={`${compareObjects[1].type.toLowerCase()};${compareObjects[1].id}`}
+                onChange={(v) =>
+                  navigate({
+                    to: "/courses/compare",
+                    search: {
+                      programmes: (() => {
+                        const [...programmes] = search.programmes;
+                        const [type, id] = v.split(";");
+                        programmes[1] = {
+                          type: type.toUpperCase() as ProgrammeType,
+                          id: parseInt(id),
+                        };
+                        return programmes;
+                      })(),
+                    },
+                  })
+                }
+              />
+              {compareObjects.length === 3 ? (
+                <div className="flex flex-col gap-2 bg-primaryBg/50 p-2 rounded-lg">
+                  <div className="flex justify-center">
+                    <span className="text-center font-bold grow">VS</span>
+                    <button
+                      className="ml-auto mr-0 text-black font-bold pr-2"
+                      onClick={() =>
+                        navigate({
+                          to: "/courses/compare",
+                          search: {
+                            programmes: [
+                              search.programmes[0],
+                              search.programmes[1],
+                            ],
+                          },
+                        })
+                      }
+                    >
+                      ✕
+                    </button>
+                  </div>
+                  <ProgrammeSelector
+                    value={`${compareObjects[2].type.toLowerCase()};${compareObjects[2].id}`}
+                    onChange={(v) =>
+                      navigate({
+                        to: "/courses/compare",
+                        search: {
+                          programmes: (() => {
+                            const [...programmes] = search.programmes;
+                            const [type, id] = v.split(";");
+                            programmes[2] = {
+                              type: type.toUpperCase() as ProgrammeType,
+                              id: parseInt(id),
+                            };
+                            return programmes;
+                          })(),
+                        },
+                      })
+                    }
+                  />
+                </div>
+              ) : (
+                <button
+                  className="bg-primaryBg rounded-md p-1 text-lg"
+                  onClick={() =>
+                    navigate({
+                      to: "/courses/compare",
+                      search: {
+                        programmes: (() => {
+                          const [...programmes] = search.programmes;
+                          programmes[2] = {
+                            type: "DIPLOMA", // anything will do as long as id is -1
+                            id: -1,
+                          };
+                          return programmes;
+                        })(),
+                      },
+                    })
+                  }
+                >
+                  + Add One More Comparison
+                </button>
+              )}
+            </div>
           </div>
         </div>
         {/* #endregion select comparison */}

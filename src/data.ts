@@ -13,6 +13,11 @@ import BachelorInformationSecurity from "@/assets/bachelor_information_technolog
 import BachelorSoftwareSystemsDevelopment from "@/assets/bachelor_information_technology_software_systems_development.png";
 import BachelorSoftwareEngineering from "@/assets/bachelor_software_engineering.png";
 
+// project previews
+
+// team member avatars
+import HanyueAvatar from "@/assets/avatar/hanyue.jpg";
+
 export interface DiplomaCourse {
   title: string;
   overview: string;
@@ -689,3 +694,52 @@ export const DegreeCourses: DegreeCourse[] = [
     ],
   },
 ];
+
+export interface TeamMember {
+  name: string;
+  programme: string;
+  avatar: string;
+}
+
+export interface Project {
+  name: string;
+  link: string;
+  overview: string;
+  shortDescription: string;
+  preview: string;
+  tags: string[];
+  members:TeamMember[];
+}
+
+export const StudentProjects: Project[] = [
+  {
+    name: "LimeLux",
+    link: "https://hoshisorakangetsu.github.io/limelux/src/html",
+    overview:"LimeLux is askdjhasd aksjdh askdjh asdasdasd asdhgsas",
+    shortDescription: "A website",
+    preview: "https://placehold.co/600x400", // change to real image
+    tags: ["HTML", "CSS", "JS"],
+    members: [
+      {
+        avatar: HanyueAvatar,
+        name: "Wong Xuan Bin",
+        programme: "Bachelor of Software Engineering (HONOURS)",
+      },
+    ],
+  },
+  {
+    name: "W-Spot",
+    link: "https://hoshisorakangetsu.github.io/w-spot/html",
+    overview:"LimeLux is askdjhasd aksjdh askdjh asdasdasd asdhgsas",
+    shortDescription: "A website",
+    preview: "https://placehold.co/600x800", // change to real image
+    tags: ["HTML", "CSS", "JS"],
+    members: [
+      {
+        avatar: HanyueAvatar,
+        name: "Wong Xuan Bin",
+        programme: "Bachelor of Software Engineering (HONOURS)",
+      },
+    ],
+  }
+]
