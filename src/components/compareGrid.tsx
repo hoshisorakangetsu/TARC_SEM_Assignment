@@ -1,6 +1,14 @@
 import { DiplomaCourse } from "@/data";
 import { useCallback, useMemo, useState } from "react";
 
+// only used in here so far, no need another utils file
+function camelToTitleCase(s: string) {
+  return s
+    .replace(/([a-z]*)([A-Z][a-z]*)/g, "$1 $2") // Insert space between lowercase and uppercase letters
+    .toLowerCase() // Convert the entire string to lowercase
+    .replace(/\b(\w)/g, (match) => match.toUpperCase()); // Capitalize first letter of each word
+}
+
 // can hack cuz we know which features require special renderring
 function FeatureRender({
   featureName,
@@ -55,27 +63,33 @@ function FeatureRender({
       );
     case "intake": {
       const intakes = v as { description: string; year: string }[];
-      return <ul className="list-disc list-inside pl-2 text-left">
-        {intakes.map((i) => (
-          <li className="[&>*]:align-text-top">
-            {i.description !== "" ? (
-              <div className="inline-block">
-                <p className="font-bold">{i.year}</p>
-                <p>{i.description}</p>
-              </div>
-            ) : (
-              <p className="inline-block">{i.year}</p>
-            )}
-          </li>
-        ))}
-      </ul>;
+      return (
+        <ul className="list-disc list-inside pl-2 text-left">
+          {intakes.map((i) => (
+            <li className="[&>*]:align-text-top">
+              {i.description !== "" ? (
+                <div className="inline-block">
+                  <p className="font-bold">{i.year}</p>
+                  <p>{i.description}</p>
+                </div>
+              ) : (
+                <p className="inline-block">{i.year}</p>
+              )}
+            </li>
+          ))}
+        </ul>
+      );
     }
     case "fee": {
       // use special render technique for fee in comparison ba haiz
-      const fees = (v as string).split(", ") // in data all is malaysianFee(, )foreigner fee
-      return <ul className="list-disc list-inside pl-2 text-left">
-        {fees.map(f => <li>{f}</li>)}
-      </ul>
+      const fees = (v as string).split(", "); // in data all is malaysianFee(, )foreigner fee
+      return (
+        <ul className="list-disc list-inside pl-2 text-left">
+          {fees.map((f) => (
+            <li>{f}</li>
+          ))}
+        </ul>
+      );
     }
     default:
       // @ts-expect-error v is of type unknown
@@ -136,7 +150,7 @@ export default function CompareGrid({
             key={`feature-${feature}`}
             className="font-medium p-2 bg-gray-100"
           >
-            {feature}
+            {camelToTitleCase(feature)}
           </div>
           {/* Feature Values for each object */}
           {compareObject[feature].map((value) =>
