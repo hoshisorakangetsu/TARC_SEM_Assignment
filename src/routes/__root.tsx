@@ -57,7 +57,7 @@ function Root() {
                 opacity: 1,
               }}
               onClick={() => setChatBotActivated(true)}
-              className="bg-primaryBg w-fit self-end px-4 py-2 rounded-md"
+              className="bg-primaryBg w-fit self-end px-4 py-2 rounded-md shadow-md hover:shadow-lg active:shadow-md"
             >
               Get Help
             </motion.button>
