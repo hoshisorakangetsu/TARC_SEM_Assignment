@@ -2,6 +2,7 @@ import Logo from "@/assets/tarumt_logo.png";
 import { Link, LinkProps } from "@tanstack/react-router";
 import clsx from "clsx";
 import { ReactNode, useEffect, useState } from "react";
+import { DiplomaCourses, DegreeCourses } from "@/data";
 
 function ArrowDownIcon({ className }: { className?: string }) {
   return (
@@ -149,38 +150,21 @@ export default function Header() {
                 </Link>
                 <NestedLinkLv2
                   title="Diploma"
+                  to="/courses/diploma"
                   titleClassName="[&.active]:font-bold text-black"
                   className="px-2 py-1"
                 >
                   <div className="flex flex-col gap-2 pl-3 pt-2 max-w-[25ch]">
-                    <Link
-                      to="/about"
-                      className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
-                      title="Diploma in Computer Science"
-                    >
-                      Diploma in Computer Science
-                    </Link>
-                    <Link
-                      to="/about"
-                      className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
-                      title="Diploma in Computer Science"
-                    >
-                      Diploma in Computer Science
-                    </Link>
-                    <Link
-                      to="/about"
-                      className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
-                      title="Diploma in Computer Science"
-                    >
-                      Diploma in Computer Science
-                    </Link>
-                    <Link
-                      to="/about"
-                      className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
-                      title="Diploma in Computer Science"
-                    >
-                      Diploma in Computer Science
-                    </Link>
+                    {DiplomaCourses.map((el, i) => (
+                      <Link
+                        to="/courses/diploma/$id"
+                        className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
+                        title={el.title}
+                        params={{ id: i.toString() }}
+                      >
+                        {el.title}
+                      </Link>
+                    ))}
                   </div>
                 </NestedLinkLv2>
                 <NestedLinkLv2
@@ -189,38 +173,16 @@ export default function Header() {
                   className="px-2 py-1"
                 >
                   <div className="flex flex-col gap-2 pl-3 pt-2 max-w-[25ch]">
-                    <Link
-                      to="/about"
-                      className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
-                      title="Bachelor of Computer Science (Honours) in Interactive Software Technology"
-                    >
-                      Bachelor of Computer Science (Honours) in Interactive
-                      Software Technology
-                    </Link>
-                    <Link
-                      to="/about"
-                      className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
-                      title="Bachelor of Computer Science (Honours) in Interactive Software Technology"
-                    >
-                      Bachelor of Computer Science (Honours) in Interactive
-                      Software Technology
-                    </Link>
-                    <Link
-                      to="/about"
-                      className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
-                      title="Bachelor of Computer Science (Honours) in Interactive Software Technology"
-                    >
-                      Bachelor of Computer Science (Honours) in Interactive
-                      Software Technology
-                    </Link>
-                    <Link
-                      to="/about"
-                      className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
-                      title="Bachelor of Computer Science (Honours) in Interactive Software Technology"
-                    >
-                      Bachelor of Computer Science (Honours) in Interactive
-                      Software Technology
-                    </Link>
+                    {DegreeCourses.map((el, i) => (
+                      <Link
+                        to="/courses/degree/$id"
+                        params={{ id: i.toString() }}
+                        className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden"
+                        title={el.title}
+                      >
+                        {el.title}
+                      </Link>
+                    ))}
                   </div>
                 </NestedLinkLv2>
                 <Link
