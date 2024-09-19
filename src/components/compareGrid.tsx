@@ -1,5 +1,7 @@
 import { DiplomaCourse } from "@/data";
 import { useCallback, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
+import Modal from "./modal";
 
 // only used in here so far, no need another utils file
 function camelToTitleCase(s: string) {
@@ -95,6 +97,24 @@ function FeatureRender({
   }
 }
 
+function AddFeatureButton({
+  feature,
+  onClick,
+}: {
+  feature: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className="px-4 py-1 bg-primaryBg rounded-md flex items-center gap-2"
+    >
+      <span>+</span>
+      <span>{feature}</span>
+    </button>
+  );
+}
+
 // takes in array of objects (has to be of the same type), populates the key of the objects (taken from object 1, so if object 2/3/4 has a key not in object 1, it is ignored) into a grid of comparison, manages its own state (which features are shown, which are not)
 export default function CompareGrid({
   objects,
@@ -115,9 +135,18 @@ export default function CompareGrid({
   }, [objects]);
 
   const [hiddenFeatures, setHiddenFeatures] = useState(["title"]); // always hide title as display on top d
+  const [modalOpen, setModalOpen] = useState(false);
 
   const filterFunc = useCallback(
     (f: string) => !hiddenFeatures.includes(f),
+    [hiddenFeatures]
+  );
+
+  const hideFeature = useCallback(
+    (f: string) => {
+      if (confirm(`Hide feature ${camelToTitleCase(f)}?`))
+        setHiddenFeatures([...hiddenFeatures, f]);
+    },
     [hiddenFeatures]
   );
 
@@ -129,14 +158,23 @@ export default function CompareGrid({
       }}
     >
       {/* Header Row */}
-      <div />
+      <div className="flex justify-center items-center h-full">
+        {hiddenFeatures.length > 1 && (
+          <button
+            className="px-2 py-1 h-fit bg-primaryBg rounded-md"
+            onClick={() => setModalOpen(true)}
+          >
+            Show Hidden Features
+          </button>
+        )}
+      </div>
       {objects.map((v, idx) => (
         <div
           key={`header-${idx}`}
           className="font-bold text-lg text-center p-2"
         >
           {/* All programmes will have title, and this grid only used to compare programmes */}
-          {v.title ? v.title as string : "-"}
+          {v.title ? (v.title as string) : "-"}
         </div>
       ))}
 
@@ -148,7 +186,15 @@ export default function CompareGrid({
             key={`feature-${feature}`}
             className="font-medium p-2 bg-gray-100"
           >
-            {camelToTitleCase(feature)}
+            <div className="flex items-center gap-4">
+              <button
+                className="text-xl text-red-500"
+                onClick={() => hideFeature(feature)}
+              >
+                ✕
+              </button>
+              <span>{camelToTitleCase(feature)}</span>
+            </div>
           </div>
           {/* Feature Values for each object */}
           {compareObject[feature].map((value) =>
@@ -160,6 +206,29 @@ export default function CompareGrid({
           )}
         </>
       ))}
+      {createPortal(
+        <Modal
+          isOpen={modalOpen}
+          onClose={() => setModalOpen(false)}
+          title="Show Features"
+          className="p-4 pt-0 flex flex-wrap gap-2"
+        >
+          {/* DO NOT SHOW TITLE AT ALL COSTS */}
+          {hiddenFeatures
+            .filter((f) => f !== "title")
+            .map((f) => (
+              <AddFeatureButton
+                feature={camelToTitleCase(f)}
+                onClick={() => {
+                  setHiddenFeatures(hiddenFeatures.filter((hf) => hf !== f));
+                  // hidden feature is still the original hidden feature array before rerender, so need check with -1
+                  if (hiddenFeatures.length - 1 <= 1) setModalOpen(false);
+                }}
+              />
+            ))}
+        </Modal>,
+        document.body
+      )}
     </div>
   );
 }
