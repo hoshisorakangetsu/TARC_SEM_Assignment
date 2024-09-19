@@ -48,7 +48,7 @@ function DegreeDetails() {
                       <p>{i.description}</p>
                     </div>
                   ) : (
-                    <p>{i.year}</p>
+                    <p className="inline-block">{i.year}</p>
                   )}
                 </li>
               ))}
