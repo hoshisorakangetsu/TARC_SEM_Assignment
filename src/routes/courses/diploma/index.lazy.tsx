@@ -25,10 +25,7 @@ function DiplomaCard({ title, id }: { title: string; id: number }) {
 function DiplomaHome() {
   return (
     <div className="min-h-dvh">
-      <PageHero
-        img={DiplomaBanner}
-        text="Faculty of Computing and Information Technology"
-      />
+      <PageHero img={DiplomaBanner} text="Diploma Courses" />
       <div className="p-16 flex flex-wrap justify-center gap-10">
         {DiplomaCourses.map((el, i) => (
           <DiplomaCard title={el.title} id={i} />
