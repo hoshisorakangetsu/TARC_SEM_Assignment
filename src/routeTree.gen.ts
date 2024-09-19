@@ -23,9 +23,11 @@ const ContactUsLazyImport = createFileRoute('/contactUs')()
 const AchievementsLazyImport = createFileRoute('/achievements')()
 const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
-const CoursesCompareLazyImport = createFileRoute('/courses/compare')()
 const CoursesDiplomaIndexLazyImport = createFileRoute('/courses/diploma/')()
 const CoursesDegreeIndexLazyImport = createFileRoute('/courses/degree/')()
+const CoursesDiplomaCompareLazyImport = createFileRoute(
+  '/courses/diploma/compare',
+)()
 const CoursesDiplomaIdLazyImport = createFileRoute('/courses/diploma/$id')()
 const CoursesDegreeIdLazyImport = createFileRoute('/courses/degree/$id')()
 
@@ -68,13 +70,6 @@ const IndexLazyRoute = IndexLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
-const CoursesCompareLazyRoute = CoursesCompareLazyImport.update({
-  path: '/courses/compare',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() =>
-  import('./routes/courses/compare.lazy').then((d) => d.Route),
-)
-
 const CoursesDiplomaIndexLazyRoute = CoursesDiplomaIndexLazyImport.update({
   path: '/courses/diploma/',
   getParentRoute: () => rootRoute,
@@ -87,6 +82,13 @@ const CoursesDegreeIndexLazyRoute = CoursesDegreeIndexLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() =>
   import('./routes/courses/degree/index.lazy').then((d) => d.Route),
+)
+
+const CoursesDiplomaCompareLazyRoute = CoursesDiplomaCompareLazyImport.update({
+  path: '/courses/diploma/compare',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/courses/diploma/compare.lazy').then((d) => d.Route),
 )
 
 const CoursesDiplomaIdLazyRoute = CoursesDiplomaIdLazyImport.update({
@@ -156,13 +158,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResearchCenterLazyImport
       parentRoute: typeof rootRoute
     }
-    '/courses/compare': {
-      id: '/courses/compare'
-      path: '/courses/compare'
-      fullPath: '/courses/compare'
-      preLoaderRoute: typeof CoursesCompareLazyImport
-      parentRoute: typeof rootRoute
-    }
     '/courses/degree/$id': {
       id: '/courses/degree/$id'
       path: '/courses/degree/$id'
@@ -175,6 +170,13 @@ declare module '@tanstack/react-router' {
       path: '/courses/diploma/$id'
       fullPath: '/courses/diploma/$id'
       preLoaderRoute: typeof CoursesDiplomaIdLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/courses/diploma/compare': {
+      id: '/courses/diploma/compare'
+      path: '/courses/diploma/compare'
+      fullPath: '/courses/diploma/compare'
+      preLoaderRoute: typeof CoursesDiplomaCompareLazyImport
       parentRoute: typeof rootRoute
     }
     '/courses/degree/': {
@@ -204,9 +206,9 @@ interface FileRoutesByFullPath {
   '/facilities': typeof FacilitiesLazyRoute
   '/highlights': typeof HighlightsLazyRoute
   '/researchCenter': typeof ResearchCenterLazyRoute
-  '/courses/compare': typeof CoursesCompareLazyRoute
   '/courses/degree/$id': typeof CoursesDegreeIdLazyRoute
   '/courses/diploma/$id': typeof CoursesDiplomaIdLazyRoute
+  '/courses/diploma/compare': typeof CoursesDiplomaCompareLazyRoute
   '/courses/degree': typeof CoursesDegreeIndexLazyRoute
   '/courses/diploma': typeof CoursesDiplomaIndexLazyRoute
 }
@@ -219,9 +221,9 @@ interface FileRoutesByTo {
   '/facilities': typeof FacilitiesLazyRoute
   '/highlights': typeof HighlightsLazyRoute
   '/researchCenter': typeof ResearchCenterLazyRoute
-  '/courses/compare': typeof CoursesCompareLazyRoute
   '/courses/degree/$id': typeof CoursesDegreeIdLazyRoute
   '/courses/diploma/$id': typeof CoursesDiplomaIdLazyRoute
+  '/courses/diploma/compare': typeof CoursesDiplomaCompareLazyRoute
   '/courses/degree': typeof CoursesDegreeIndexLazyRoute
   '/courses/diploma': typeof CoursesDiplomaIndexLazyRoute
 }
@@ -234,9 +236,9 @@ interface FileRoutesById {
   '/facilities': typeof FacilitiesLazyRoute
   '/highlights': typeof HighlightsLazyRoute
   '/researchCenter': typeof ResearchCenterLazyRoute
-  '/courses/compare': typeof CoursesCompareLazyRoute
   '/courses/degree/$id': typeof CoursesDegreeIdLazyRoute
   '/courses/diploma/$id': typeof CoursesDiplomaIdLazyRoute
+  '/courses/diploma/compare': typeof CoursesDiplomaCompareLazyRoute
   '/courses/degree/': typeof CoursesDegreeIndexLazyRoute
   '/courses/diploma/': typeof CoursesDiplomaIndexLazyRoute
 }
@@ -251,9 +253,9 @@ interface FileRouteTypes {
     | '/facilities'
     | '/highlights'
     | '/researchCenter'
-    | '/courses/compare'
     | '/courses/degree/$id'
     | '/courses/diploma/$id'
+    | '/courses/diploma/compare'
     | '/courses/degree'
     | '/courses/diploma'
   fileRoutesByTo: FileRoutesByTo
@@ -265,9 +267,9 @@ interface FileRouteTypes {
     | '/facilities'
     | '/highlights'
     | '/researchCenter'
-    | '/courses/compare'
     | '/courses/degree/$id'
     | '/courses/diploma/$id'
+    | '/courses/diploma/compare'
     | '/courses/degree'
     | '/courses/diploma'
   id:
@@ -278,9 +280,9 @@ interface FileRouteTypes {
     | '/facilities'
     | '/highlights'
     | '/researchCenter'
-    | '/courses/compare'
     | '/courses/degree/$id'
     | '/courses/diploma/$id'
+    | '/courses/diploma/compare'
     | '/courses/degree/'
     | '/courses/diploma/'
   fileRoutesById: FileRoutesById
@@ -294,9 +296,9 @@ interface RootRouteChildren {
   FacilitiesLazyRoute: typeof FacilitiesLazyRoute
   HighlightsLazyRoute: typeof HighlightsLazyRoute
   ResearchCenterLazyRoute: typeof ResearchCenterLazyRoute
-  CoursesCompareLazyRoute: typeof CoursesCompareLazyRoute
   CoursesDegreeIdLazyRoute: typeof CoursesDegreeIdLazyRoute
   CoursesDiplomaIdLazyRoute: typeof CoursesDiplomaIdLazyRoute
+  CoursesDiplomaCompareLazyRoute: typeof CoursesDiplomaCompareLazyRoute
   CoursesDegreeIndexLazyRoute: typeof CoursesDegreeIndexLazyRoute
   CoursesDiplomaIndexLazyRoute: typeof CoursesDiplomaIndexLazyRoute
 }
@@ -309,9 +311,9 @@ const rootRouteChildren: RootRouteChildren = {
   FacilitiesLazyRoute: FacilitiesLazyRoute,
   HighlightsLazyRoute: HighlightsLazyRoute,
   ResearchCenterLazyRoute: ResearchCenterLazyRoute,
-  CoursesCompareLazyRoute: CoursesCompareLazyRoute,
   CoursesDegreeIdLazyRoute: CoursesDegreeIdLazyRoute,
   CoursesDiplomaIdLazyRoute: CoursesDiplomaIdLazyRoute,
+  CoursesDiplomaCompareLazyRoute: CoursesDiplomaCompareLazyRoute,
   CoursesDegreeIndexLazyRoute: CoursesDegreeIndexLazyRoute,
   CoursesDiplomaIndexLazyRoute: CoursesDiplomaIndexLazyRoute,
 }
@@ -335,9 +337,9 @@ export const routeTree = rootRoute
         "/facilities",
         "/highlights",
         "/researchCenter",
-        "/courses/compare",
         "/courses/degree/$id",
         "/courses/diploma/$id",
+        "/courses/diploma/compare",
         "/courses/degree/",
         "/courses/diploma/"
       ]
@@ -363,14 +365,14 @@ export const routeTree = rootRoute
     "/researchCenter": {
       "filePath": "researchCenter.lazy.tsx"
     },
-    "/courses/compare": {
-      "filePath": "courses/compare.lazy.tsx"
-    },
     "/courses/degree/$id": {
       "filePath": "courses/degree/$id.lazy.tsx"
     },
     "/courses/diploma/$id": {
       "filePath": "courses/diploma/$id.lazy.tsx"
+    },
+    "/courses/diploma/compare": {
+      "filePath": "courses/diploma/compare.lazy.tsx"
     },
     "/courses/degree/": {
       "filePath": "courses/degree/index.lazy.tsx"

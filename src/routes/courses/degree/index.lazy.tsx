@@ -1,13 +1,13 @@
 import PageHero from "@/components/pageHero";
-import { DiplomaCourses } from "@/data";
+import { DegreeCourses } from "@/data";
 import DiplomaBanner from "@/assets/diploma_bg.jpg";
 import { createLazyFileRoute, Link } from "@tanstack/react-router";
 
 export const Route = createLazyFileRoute("/courses/degree/")({
-  component: DiplomaHome,
+  component: DegreeHome,
 });
 
-function DiplomaCard({ title, id }: { title: string; id: number }) {
+function DegreeCard({ title, id }: { title: string; id: number }) {
   return (
     <Link
       to="/courses/degree/$id"
@@ -22,16 +22,13 @@ function DiplomaCard({ title, id }: { title: string; id: number }) {
   );
 }
 
-function DiplomaHome() {
+function DegreeHome() {
   return (
     <div className="min-h-dvh">
-      <PageHero
-        img={DiplomaBanner}
-        text="Faculty of Computing and Information Technology"
-      />
+      <PageHero img={DiplomaBanner} text="Bachelor Degree Courses" />
       <div className="p-16 flex flex-wrap justify-center gap-10">
-        {DiplomaCourses.map((el, i) => (
-          <DiplomaCard title={el.title} id={i} />
+        {DegreeCourses.map((el, i) => (
+          <DegreeCard title={el.title} id={i} />
         ))}
       </div>
     </div>

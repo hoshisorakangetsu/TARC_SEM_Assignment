@@ -142,7 +142,7 @@ function ScholarshipInteractive() {
       </div>
       <div
         className={clsx(
-          "grid overflow-hidden",
+          "grid overflow-hidden transition-all",
           selected > -1 && selected < scholarships.length
             ? "grid-rows-[1fr]"
             : "grid-rows-[0fr]"
