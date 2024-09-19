@@ -3,6 +3,7 @@ import PageHero from "@/components/pageHero";
 import { DegreeCourses } from "@/data";
 import { createLazyFileRoute, useNavigate } from "@tanstack/react-router";
 import DegreeBanner from "@/assets/degree_bg.png";
+import EnrollBtn from "@/components/enrollBtn";
 
 export const Route = createLazyFileRoute("/courses/degree/$id")({
   component: DegreeDetails,
@@ -102,6 +103,7 @@ function DegreeDetails() {
         </div>
         {/* #endregion accordians */}
       </div>
+      <EnrollBtn />
     </div>
   );
 }
