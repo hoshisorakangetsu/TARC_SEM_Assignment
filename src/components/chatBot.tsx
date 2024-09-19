@@ -256,16 +256,53 @@ const aiResponseDict: { [k: string]: Omit<AiMessage, "id"> } = {
   },    
   scholarship: {
     by: "RESPONDER",
-    content: "As you wish",
+    content: "We offer various scholarships for deserving students.",
     time: new Date().toLocaleTimeString(),
     interactive: ScholarshipInteractive,
   },
-  money: {
+  "funding": {
     by: "RESPONDER",
-    content: "As you wish",
+    content: "We offer various scholarships for deserving students.",
     time: new Date().toLocaleTimeString(),
     interactive: ScholarshipInteractive,
   },
+  "financial aid": {
+    by: "RESPONDER",
+    content: "We offer various scholarships for deserving students.",
+    time: new Date().toLocaleTimeString(),
+    interactive: ScholarshipInteractive,
+  },
+  bursary: {
+    by: "RESPONDER",
+    content: "We offer various scholarships for deserving students.",
+    time: new Date().toLocaleTimeString(),
+    interactive: ScholarshipInteractive,
+  },
+  award: {
+    by: "RESPONDER",
+    content: "We offer various scholarships for deserving students.",
+    time: new Date().toLocaleTimeString(),
+    interactive: ScholarshipInteractive,
+  },
+  "tuition fee": {
+    by: "RESPONDER",
+    content: "We offer various scholarships for deserving students.",
+    time: new Date().toLocaleTimeString(),
+    interactive: ScholarshipInteractive,
+  },
+  "student loan": {
+    by: "RESPONDER",
+    content: "We offer various scholarships for deserving students.",
+    time: new Date().toLocaleTimeString(),
+    interactive: ScholarshipInteractive,
+  },
+  "merit scholarship": {
+    by: "RESPONDER",
+    content: "We offer various scholarships for deserving students.",
+    time: new Date().toLocaleTimeString(),
+    interactive: ScholarshipInteractive,
+  }
+
 };
 
 const getAiResponse = (s: string): Omit<AiMessage, "id"> => {
