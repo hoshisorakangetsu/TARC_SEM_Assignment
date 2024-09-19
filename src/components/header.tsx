@@ -154,6 +154,7 @@ export default function Header() {
                   title="Bachelor Degree"
                   titleClassName="[&.active]:font-bold text-black"
                   className="px-2 py-1"
+                  to="/courses/degree"
                 >
                   <div className="flex flex-col gap-2 pl-3 pt-2 max-w-[25ch]">
                     {DegreeCourses.map((el, i) => (

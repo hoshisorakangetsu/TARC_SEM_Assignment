@@ -14,21 +14,21 @@ export default function Accordian({
         onClick={() => setIsOpen(!isOpen)}
         className="cursor-pointer flex justify-between"
       >
-        <span className="text-2xl font-bold">{title}</span>
+        <span className="text-lg font-bold">{title}</span>
         <ArrowDownIcon
           className={clsx("w-[2em] transition-transform", {
             "rotate-180": isOpen,
           })}
         />
       </div>
-      <div className="mt-2 h-[1px] bg-black" />
+      <hr className="mt-4 border-black" />
       <div
         className={clsx(
           "grid overflow-hidden transition-all",
           isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         )}
       >
-        <div className="min-h-0 pt-2">{children}</div>
+        <div className="min-h-0 pt-4">{children}</div>
       </div>
     </div>
   );
