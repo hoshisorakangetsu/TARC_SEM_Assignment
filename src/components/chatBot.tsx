@@ -161,7 +161,7 @@ function ScholarshipInteractive() {
 }
 
 const aiResponseDict: { [k: string]: Omit<AiMessage, "id"> } = {
-  book: {
+  "book a slot": {
     by: "RESPONDER",
     content: "As you wish",
     time: new Date().toLocaleTimeString(),
