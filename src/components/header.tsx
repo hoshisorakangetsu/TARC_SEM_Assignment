@@ -201,7 +201,7 @@ export default function Header() {
           </li>
           <NestedLink title="People" className={linkNavClass}>
             <div className="grid grid-flow-row">
-              <div className="flex flex-col max-w-[20ch]">
+              <div className="flex flex-col max-w-[25ch]">
                 <Link
                   to="/about"
                   className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden px-2 py-1"
@@ -230,9 +230,25 @@ export default function Header() {
             </div>
           </NestedLink>
           <li>
-            <Link to="/highlights" className={linkNavClass}>
-              Highlights
-            </Link>
+            <NestedLink title="Highlights" className={linkNavClass}>
+            <div className="grid grid-flow-row">
+              <div className="flex flex-col max-w-[25ch]">
+                <Link
+                  to="/about"
+                  className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden px-2 py-1"
+                >
+                  News
+                </Link>
+                <Link
+                  to="/projects"
+                  className="[&.active]:font-bold text-black text-nowrap text-ellipsis overflow-hidden px-2 py-1"
+                  title="Students' Projects Showcase"
+                >
+                  Students' Projects Showcase
+                </Link>
+              </div>
+            </div>
+          </NestedLink>
           </li>
           <li>
             <Link to="/achievements" className={linkNavClass}>
