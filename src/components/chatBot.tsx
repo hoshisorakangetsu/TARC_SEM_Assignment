@@ -56,6 +56,7 @@ function SchedulerInteractive() {
                 "grow py-1 rounded-md",
                 (selected ?? -1) === i ? "bg-primaryBg" : "bg-primaryBg/20"
               )}
+              key={i}
               onClick={() => {
                 setSelected(i);
               }}
@@ -69,6 +70,136 @@ function SchedulerInteractive() {
   );
 }
 
+interface ScholarshipData {
+  title: string;
+  description: string;
+  requirement: string[];
+  link: string;
+}
+
+const ScholarshipCard = ({
+  title,
+  description,
+  requirement,
+  link,
+}: ScholarshipData) => (
+  <div className="mt-2 p-2 rounded-md bg-white flex flex-col gap-2">
+    <h1 className="font-bold text-lg">{title}</h1>
+    <p>{description}</p>
+    <p>Requirements</p>
+    <ul className="list-disc list-inside">
+      {requirement.map((r) => (
+        <li>{r}</li>
+      ))}
+    </ul>
+    <button
+      className="py-1 bg-primaryBg rounded-md"
+      onClick={() => window.open(link, "_blank")}
+    >
+      MORE DETAILS
+    </button>
+  </div>
+);
+
+const scholarships: ScholarshipData[] = [
+  {
+    title: "Hello",
+    description: "Test Scholarship",
+    requirement: ["10000 A"],
+    link: "https://focs.tarc.edu.my",
+  },
+  {
+    title: "Hello",
+    description:
+      "Test Scholarship with very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very long description",
+    requirement: ["10000 A"],
+    link: "https://focs.tarc.edu.my",
+  },
+];
+
+function ScholarshipInteractive() {
+  const [selected, setSelected] = useState(-1);
+  return (
+    <div className="flex flex-col p-2 bg-black/10 w-full mt-1 rounded-md">
+      <p>Please select your desired scholarship</p>
+      <div className="w-full flex gap-2">
+        {scholarships.map((_el, i) => {
+          return (
+            <button
+              className={clsx(
+                "grow py-1 rounded-md",
+                (selected ?? -1) === i ? "bg-primaryBg" : "bg-primaryBg/20"
+              )}
+              key={i}
+              onClick={() => {
+                setSelected(i);
+              }}
+            >
+              {i}
+            </button>
+          );
+        })}
+      </div>
+      <div
+        className={clsx(
+          "grid overflow-hidden",
+          selected > -1 && selected < scholarships.length
+            ? "grid-rows-[1fr]"
+            : "grid-rows-[0fr]"
+        )}
+      >
+        <div className="min-h-0">
+          {selected > -1 && selected < scholarships.length ? (
+            <ScholarshipCard {...scholarships[selected]} />
+          ) : (
+            <span>Unknown</span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const aiResponseDict: { [k: string]: Omit<AiMessage, "id"> } = {
+  book: {
+    by: "RESPONDER",
+    content: "As you wish",
+    time: new Date().toLocaleTimeString(),
+    interactive: SchedulerInteractive,
+  },
+  sched: {
+    by: "RESPONDER",
+    content: "As you wish",
+    time: new Date().toLocaleTimeString(),
+    interactive: SchedulerInteractive,
+  },
+  scholarship: {
+    by: "RESPONDER",
+    content: "As you wish",
+    time: new Date().toLocaleTimeString(),
+    interactive: ScholarshipInteractive,
+  },
+  money: {
+    by: "RESPONDER",
+    content: "As you wish",
+    time: new Date().toLocaleTimeString(),
+    interactive: ScholarshipInteractive,
+  },
+};
+
+const getAiResponse = (s: string): Omit<AiMessage, "id"> => {
+  for (const k in aiResponseDict) {
+    if (s.includes(k)) {
+      return aiResponseDict[k as keyof typeof aiResponseDict];
+    }
+  }
+  return {
+    by: "RESPONDER",
+    content: "Sorry, I am currently unable to help with that",
+    time: new Date().toLocaleTimeString(),
+  };
+};
+
 export default function ChatBot({ onClose }: { onClose?: () => void }) {
   const [aiMessage, setAiMessage] = useState<(HumanMessage | AiMessage)[]>([]);
   const [agentMessage, setAgentMessage] = useState<HumanMessage[]>([]);
@@ -80,13 +211,7 @@ export default function ChatBot({ onClose }: { onClose?: () => void }) {
 
   const userSendMessage = useCallback(() => {
     if (messageType === "AI") {
-      let interactive = {};
-      if (
-        currentMessage.toLowerCase().includes("sched") ||
-        currentMessage.toLowerCase().includes("book")
-      ) {
-        interactive = { interactive: SchedulerInteractive };
-      }
+      const aiResponse = getAiResponse(currentMessage);
       setAiMessage([
         ...aiMessage,
         {
@@ -97,10 +222,7 @@ export default function ChatBot({ onClose }: { onClose?: () => void }) {
         },
         {
           id: messageId + 1,
-          by: "RESPONDER",
-          content: "As you wish",
-          time: new Date().toLocaleTimeString(),
-          ...interactive,
+          ...aiResponse,
         },
       ]);
       setMessageId(messageId + 2);

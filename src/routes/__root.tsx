@@ -26,7 +26,7 @@ function Root() {
         <Outlet />
       </main>
       <Footer />
-      <div className="fixed z-[999] right-8 bottom-8 flex flex-col gap-4 max-w-md min-w-80">
+      <div className="fixed z-[999] right-8 bottom-8 flex flex-col gap-4 max-w-md min-w-[28rem]">
         <AnimatePresence>
           {chatBotActivated ? (
             <motion.div
