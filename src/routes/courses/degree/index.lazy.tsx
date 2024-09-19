@@ -1,9 +1,9 @@
 import PageHero from "@/components/pageHero";
 import { DiplomaCourses } from "@/data";
 import DiplomaBanner from "@/assets/diploma_bg.jpg";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createLazyFileRoute, Link } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/courses/degree/")({
+export const Route = createLazyFileRoute("/courses/degree/")({
   component: DiplomaHome,
 });
 
