@@ -13,7 +13,7 @@ export const Route = createRootRoute({
 
 function Root() {
   const [feedbackShown, setFeedbackShown] = useState(false);
-  const [chatBotActivated, setChatBotActivated] = useState(true);
+  const [chatBotActivated, setChatBotActivated] = useState(false);
 
   useEffect(() => {
     setTimeout(() => setFeedbackShown(true), 5000);
