@@ -1,5 +1,4 @@
-import { DiplomaCourse } from "@/data";
-import { useCallback, useMemo, useState } from "react";
+import { Fragment, useCallback, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import Modal from "./modal";
 
@@ -19,12 +18,18 @@ function FeatureRender({
   featureName: string;
   v: unknown;
 }) {
+  // only if type is image will use tiok this
+  const [viewEnlarged, setViewEnlarged] = useState(false);
   switch (featureName) {
+    case "overview":
+      return <p className="text-justify">
+        {v as string}
+      </p>
     case "campus":
       return (
         <ul className="list-disc list-inside pl-2 text-left">
           {(v as string[]).map((c) => (
-            <li>{c}</li>
+            <li key={c}>{c}</li>
           ))}
         </ul>
       );
@@ -35,22 +40,39 @@ function FeatureRender({
             src={v as string}
             alt="Entry Requirement"
             className="w-full h-auto"
+            onClick={() => setViewEnlarged(true)}
           />
+          {createPortal(
+        <Modal
+          isOpen={viewEnlarged}
+          onClose={() => setViewEnlarged(false)}
+          title="Show Features"
+          className="p-4 pt-0 flex flex-wrap gap-2 overflow-auto"
+        >
+          <img
+            src={v as string}
+            alt="Entry Requirement"
+            className="w-full h-auto"
+            onClick={() => setViewEnlarged(true)}
+          />
+        </Modal>,
+        document.body
+      )}
         </div>
       );
     case "outline":
       return (
         <ul className="list-disc list-inside pl-2 text-left">
-          {(v as string[]).map((c) => (
-            <li>{c}</li>
+          {(v as string[]).map((o) => (
+            <li key={o}>{o}</li>
           ))}
         </ul>
       );
     case "progression":
       return (
         <ul className="list-disc list-inside pl-2 text-left">
-          {(v as string[]).map((c) => (
-            <li>{c}</li>
+          {(v as string[]).map((p) => (
+            <li key={p}>{p}</li>
           ))}
         </ul>
       );
@@ -58,7 +80,7 @@ function FeatureRender({
       return (
         <ul className="list-disc list-inside pl-2 text-left">
           {(v as string[]).map((c) => (
-            <li>{c}</li>
+            <li key={c}>{c}</li>
           ))}
         </ul>
       );
@@ -67,7 +89,7 @@ function FeatureRender({
       return (
         <ul className="list-disc list-inside pl-2 text-left">
           {intakes.map((i) => (
-            <li className="[&>*]:align-text-top">
+            <li className="[&>*]:align-text-top" key={i.year}>
               {i.description !== "" ? (
                 <div className="inline-block">
                   <p className="font-bold">{i.year}</p>
@@ -87,7 +109,7 @@ function FeatureRender({
       return (
         <ul className="list-disc list-inside pl-2 text-left">
           {fees.map((f) => (
-            <li>{f}</li>
+            <li key={f}>{f}</li>
           ))}
         </ul>
       );
@@ -174,13 +196,13 @@ export default function CompareGrid({
           className="font-bold text-lg text-center p-2"
         >
           {/* All programmes will have title, and this grid only used to compare programmes */}
-          {v.title ? (v.title as string) : "-"}
+          {v?.title ? (v?.title as string) : "-"}
         </div>
       ))}
 
       {/* Data Rows */}
       {compareFeatures.filter(filterFunc).map((feature) => (
-        <>
+        <Fragment key={feature}>
           {/* Feature Name */}
           <div
             key={`feature-${feature}`}
@@ -190,6 +212,7 @@ export default function CompareGrid({
               <button
                 className="text-xl text-red-500"
                 onClick={() => hideFeature(feature)}
+                title="Hide Feature"
               >
                 ✕
               </button>
@@ -200,11 +223,15 @@ export default function CompareGrid({
           {compareObject[feature].map((value) =>
             (value as unknown[]).map((v, idx) => (
               <div key={`value-${feature}-${idx}`} className="p-2 text-center">
-                {v ? <FeatureRender featureName={feature} v={v} /> : "-"}
+                {v ? (
+                  <FeatureRender featureName={feature} v={v} />
+                ) : (
+                  <span className="text-xl">N/A</span>
+                )}
               </div>
             ))
           )}
-        </>
+        </Fragment>
       ))}
       {createPortal(
         <Modal
@@ -218,6 +245,7 @@ export default function CompareGrid({
             .filter((f) => f !== "title")
             .map((f) => (
               <AddFeatureButton
+                key={f}
                 feature={camelToTitleCase(f)}
                 onClick={() => {
                   setHiddenFeatures(hiddenFeatures.filter((hf) => hf !== f));
