@@ -16,7 +16,7 @@ function DiplomaCompare() {
         <CompareGrid
           objects={[
             DiplomaCourses[0] as unknown as { [k: string]: unknown },
-            DiplomaCourses[1] as unknown as { [k: string]: unknown },
+            {},
           ]}
         />
       </div>

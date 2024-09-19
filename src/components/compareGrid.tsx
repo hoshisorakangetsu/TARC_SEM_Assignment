@@ -136,7 +136,7 @@ export default function CompareGrid({
           className="font-bold text-lg text-center p-2"
         >
           {/* All programmes will have title, and this grid only used to compare programmes */}
-          {v.title as string}
+          {v.title ? v.title as string : "-"}
         </div>
       ))}
 
