@@ -3,6 +3,7 @@ import DiplomaBanner from "@/assets/diploma_bg.jpg";
 import { DiplomaCourses } from "@/data";
 import { createLazyFileRoute, useNavigate } from "@tanstack/react-router";
 import Accordian from "@/components/accordian";
+import EnrollBtn from "@/components/enrollBtn";
 
 export const Route = createLazyFileRoute("/courses/diploma/$id")({
   component: DiplomaDetail,
@@ -114,6 +115,7 @@ function DiplomaDetail() {
         </div>
         {/* #endregion accordians */}
       </div>
+      <EnrollBtn />
     </div>
   );
 }
