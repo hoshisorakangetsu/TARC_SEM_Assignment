@@ -129,8 +129,16 @@ function Compare() {
               }
             />
             {compareObjects.length === 3 ? (
-              <>
-                <span className="text-center font-bold">VS</span>
+              <div className="flex flex-col gap-2 bg-primaryBg/50 p-2 rounded-lg">
+                <div className="flex justify-center">
+                  <span className="text-center font-bold grow">VS</span>
+                  <button className="ml-auto mr-0 text-black font-bold pr-2" onClick={() => navigate({
+                      to: "/courses/compare",
+                      search: {
+                        programmes: [search.programmes[0], search.programmes[1]],
+                      },
+                    })}>✕</button>
+                </div>
                 <ProgrammeSelector
                   value={`${compareObjects[2].type.toLowerCase()};${compareObjects[2].id}`}
                   onChange={(v) =>
@@ -150,7 +158,7 @@ function Compare() {
                     })
                   }
                 />
-              </>
+              </div>
             ) : (
               <button
                 className="bg-primaryBg rounded-md p-1 text-lg"
