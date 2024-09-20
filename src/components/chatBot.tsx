@@ -103,20 +103,6 @@ const ScholarshipCard = ({
 
 const scholarships: ScholarshipData[] = [
   {
-    title: "APU Malaysian Scholarships & Merit Awards 2024",
-    description:
-      "Offered by Asia Pacific University of Technology & Innovation (APU), this scholarship is available for undergraduate students based on academic merit.",
-    requirement: [
-      "SPM 10 A+: 100% Discount (Interview Required)",
-      "SPM 9 A's: 50% Discount",
-      "SPM 8 A's: 40% Discount",
-      "SPM 7 A's: 30% Discount",
-      "SPM 6 A's: 20% Discount",
-      "SPM 4-5 A's: 10% Discount",
-    ],
-    link: "https://www.apu.edu.my/meritscholarships",
-  },
-  {
     title: "TAR UMT Merit Scholarship 2024",
     description:
       "Tunku Abdul Rahman University of Management and Technology (TARUMT) offers merit-based scholarships to students pursuing degrees at their institution.",
@@ -125,7 +111,7 @@ const scholarships: ScholarshipData[] = [
       "SPM: 8As or O Level: 7As: 50% Discount",
       "SPM: 7As or O Level: 6As: 25% Discount",
       "SPM: 6As: 20% Discount (Foundation Programmes only)",
-      "SPM: 5As: 15% Discount (Foundation Programmes only)"
+      "SPM: 5As: 15% Discount (Foundation Programmes only)",
     ],
     link: "https://www.tarc.edu.my/admissions/a/merit-scholarship/",
   },
@@ -133,21 +119,16 @@ const scholarships: ScholarshipData[] = [
     title: "Shell Malaysia Scholarship 2024",
     description:
       "Shell offers scholarships for students pursuing higher education, focusing on fields like engineering, geosciences, and commercial.",
-    requirement: [
-      "SPM: Minimum 8As",
-      "O-Level: Excellent grades (A*/A)"
-    ],
+    requirement: ["SPM: Minimum 8As", "O-Level: Excellent grades (A*/A)"],
     link: "https://www.shell.com.my/careers/students-and-graduates/scholarships.html",
   },
   {
     title: "Bank Negara Malaysia Scholarships",
     description:
       "A prestigious scholarship offered by Bank Negara Malaysia for undergraduate students in Malaysia.",
-    requirement: [
-      "SPM: Minimum 8As"
-    ],
+    requirement: ["SPM: Minimum 8As"],
     link: "https://www.bnm.gov.my/careers/scholarships",
-  }
+  },
 ];
 
 function ScholarshipInteractive() {
@@ -196,178 +177,166 @@ function ScholarshipInteractive() {
 const aiResponseDict: { [k: string]: Omit<AiMessage, "id"> } = {
   book: {
     by: "RESPONDER",
-    content: "Your booking has been confirmed! The staff is ready to assist you.",
+    content:
+      "Let's get started with the booking! The staff will be ready to assist you.",
     time: new Date().toLocaleTimeString(),
     interactive: SchedulerInteractive,
   },
   tour: {
-      by: "RESPONDER",
-      content: "Your tour is scheduled! The staff will be ready to guide you.",
-      time: new Date().toLocaleTimeString(),
-      interactive: SchedulerInteractive,
-    },
+    by: "RESPONDER",
+    content: "Let's schedule your tour! The staff will be ready to guide you.",
+    time: new Date().toLocaleTimeString(),
+    interactive: SchedulerInteractive,
+  },
   visit: {
-      by: "RESPONDER",
-      content: "Visit confirmed! We're excited to have you. The staff is available.",
-      time: new Date().toLocaleTimeString(),
-      interactive: SchedulerInteractive,
-    },
+    by: "RESPONDER",
+    content: "Let's schedule your visit! We're excited to have you. ",
+    time: new Date().toLocaleTimeString(),
+    interactive: SchedulerInteractive,
+  },
   appointment: {
-      by: "RESPONDER",
-      content: "Your appointment has been arranged. The staff will meet you then.",
-      time: new Date().toLocaleTimeString(),
-      interactive: SchedulerInteractive,
-    },
+    by: "RESPONDER",
+    content: "Let's arrange your appointment! The staff will meet you then.",
+    time: new Date().toLocaleTimeString(),
+    interactive: SchedulerInteractive,
+  },
   reserve: {
-      by: "RESPONDER",
-      content: "Reservation successful! The staff is ready to accommodate you.",
-      time: new Date().toLocaleTimeString(),
-      interactive: SchedulerInteractive,
-    },
-  schedule: {
-      by: "RESPONDER",
-      content: "The schedule is set! Our staff will be ready to assist you.",
-      time: new Date().toLocaleTimeString(),
-      interactive: SchedulerInteractive,
-    },
+    by: "RESPONDER",
+    content:
+      "Let's get started on the reservation! The staff will be ready to accommodate you.",
+    time: new Date().toLocaleTimeString(),
+    interactive: SchedulerInteractive,
+  },
+  sched: {
+    by: "RESPONDER",
+    content:
+      "Let's start by selecting a timeslot! Our staff will be ready to assist you.",
+    time: new Date().toLocaleTimeString(),
+    interactive: SchedulerInteractive,
+  },
   consultation: {
-      by: "RESPONDER",
-      content: "Your consultation is confirmed. The staff is prepared for your session.",
-      time: new Date().toLocaleTimeString(),
-      interactive: SchedulerInteractive,
-    },
-  enroll: {
-      by: "RESPONDER",
-      content: "Enrollment is confirmed! Our team will assist you moving forward.",
-      time: new Date().toLocaleTimeString(),
-      interactive: SchedulerInteractive,
-    },
-  meeting: {
-      by: "RESPONDER",
-      content: "Your meeting is scheduled. The staff is looking forward to assisting you.",
-      time: new Date().toLocaleTimeString(),
-      interactive: SchedulerInteractive,
-    },
-    scholarship: {
-      by: "RESPONDER",
-      content: "We offer a variety of scholarships for qualified students. Learn more today!",
-      time: new Date().toLocaleTimeString(),
-      interactive: ScholarshipInteractive,
-    },
+    by: "RESPONDER",
+    content:
+      "Let's get started on booking a consultation! The staff will be prepared for your session.",
+    time: new Date().toLocaleTimeString(),
+    interactive: SchedulerInteractive,
+  },
+  meet: {
+    by: "RESPONDER",
+    content:
+      "Let's start by scheduling the meeting! The staff is looking forward to assisting you.",
+    time: new Date().toLocaleTimeString(),
+    interactive: SchedulerInteractive,
+  },
+  scholarship: {
+    by: "RESPONDER",
+    content:
+      "We offer a variety of scholarships for qualified students. Learn more today!",
+    time: new Date().toLocaleTimeString(),
+    interactive: ScholarshipInteractive,
+  },
   funding: {
-      by: "RESPONDER",
-      content: "Discover our funding options available for students. Explore the details now!",
-      time: new Date().toLocaleTimeString(),
-      interactive: ScholarshipInteractive,
-    },
+    by: "RESPONDER",
+    content:
+      "Discover our funding options available for students. Explore the details now!",
+    time: new Date().toLocaleTimeString(),
+    interactive: ScholarshipInteractive,
+  },
   "financial aid": {
-      by: "RESPONDER",
-      content: "Need financial assistance? We have aid packages for deserving students.",
-      time: new Date().toLocaleTimeString(),
-      interactive: ScholarshipInteractive,
-    },
+    by: "RESPONDER",
+    content:
+      "Need financial assistance? We have aid packages for deserving students.",
+    time: new Date().toLocaleTimeString(),
+    interactive: ScholarshipInteractive,
+  },
   bursary: {
-      by: "RESPONDER",
-      content: "Apply for bursaries to help cover your tuition and other expenses.",
-      time: new Date().toLocaleTimeString(),
-      interactive: ScholarshipInteractive,
-    },
+    by: "RESPONDER",
+    content:
+      "Apply for bursaries to help cover your tuition and other expenses.",
+    time: new Date().toLocaleTimeString(),
+    interactive: ScholarshipInteractive,
+  },
   award: {
-      by: "RESPONDER",
-      content: "Our awards recognize academic excellence. Check if you're eligible!",
-      time: new Date().toLocaleTimeString(),
-      interactive: ScholarshipInteractive,
-    },
-  "tuition fee": {
-      by: "RESPONDER",
-      content: "We provide support to help manage your tuition fees. Learn how to apply.",
-      time: new Date().toLocaleTimeString(),
-      interactive: ScholarshipInteractive,
-    },
-  "student loan": {
-      by: "RESPONDER",
-      content: "We offer student loans to help finance your education. Find out more.",
-      time: new Date().toLocaleTimeString(),
-      interactive: ScholarshipInteractive,
-    },
-  "merit scholarship": {
-      by: "RESPONDER",
-      content: "Merit scholarships are available for students with outstanding grades. Apply now!",
-      time: new Date().toLocaleTimeString(),
-      interactive: ScholarshipInteractive,
-    },
-
+    by: "RESPONDER",
+    content:
+      "Our awards recognize academic excellence. Check if you're eligible!",
+    time: new Date().toLocaleTimeString(),
+    interactive: ScholarshipInteractive,
+  },
+  fee: {
+    by: "RESPONDER",
+    content:
+      "We provide support to help manage your tuition fees. Learn how to apply.",
+    time: new Date().toLocaleTimeString(),
+    interactive: ScholarshipInteractive,
+  },
+  loan: {
+    by: "RESPONDER",
+    content:
+      "We offer student loans to help finance your education. Find out more.",
+    time: new Date().toLocaleTimeString(),
+    interactive: ScholarshipInteractive,
+  },
   hello: {
     by: "RESPONDER",
     content: "Hello! How can I assist you today?",
     time: new Date().toLocaleTimeString(),
-    },
+  },
   hi: {
-      by: "RESPONDER",
-      content: "Hi there! What can I do for you today?",
-      time: new Date().toLocaleTimeString(),
-    },
+    by: "RESPONDER",
+    content: "Hi there! What can I do for you today?",
+    time: new Date().toLocaleTimeString(),
+  },
   hey: {
-      by: "RESPONDER",
-      content: "Hey! How can I help you?",
-      time: new Date().toLocaleTimeString(),
-    },
+    by: "RESPONDER",
+    content: "Hey! How can I help you?",
+    time: new Date().toLocaleTimeString(),
+  },
   greetings: {
-      by: "RESPONDER",
-      content: "Greetings! How may I assist you?",
-      time: new Date().toLocaleTimeString(),
-    },
-  "good morning": {
-      by: "RESPONDER",
-      content: "Good morning! How can I assist you today?",
-      time: new Date().toLocaleTimeString(),
-    },
-  "good afternoon": {
-      by: "RESPONDER",
-      content: "Good afternoon! How can I help?",
-      time: new Date().toLocaleTimeString(),
-    },
-  "good evening": {
-      by: "RESPONDER",
-      content: "Good evening! How may I assist you today?",
-      time: new Date().toLocaleTimeString(),
-    },
+    by: "RESPONDER",
+    content: "Greetings! How may I assist you?",
+    time: new Date().toLocaleTimeString(),
+  },
+  morning: {
+    by: "RESPONDER",
+    content: "Good morning! How can I assist you today?",
+    time: new Date().toLocaleTimeString(),
+  },
+  afternoon: {
+    by: "RESPONDER",
+    content: "Good afternoon! How can I help?",
+    time: new Date().toLocaleTimeString(),
+  },
+  evening: {
+    by: "RESPONDER",
+    content: "Good evening! How may I assist you today?",
+    time: new Date().toLocaleTimeString(),
+  },
   "how are you": {
-      by: "RESPONDER",
-      content: "I’m doing great! How about you?",
-      time: new Date().toLocaleTimeString(),
-    },
-  "bye": {
-      by: "RESPONDER",
-      content: "Goodbye! Have a great day ahead!",
-      time: new Date().toLocaleTimeString(),
-    },
-  "thank you": {
-      by: "RESPONDER",
-      content: "You're welcome! Let me know if you need anything else.",
-      time: new Date().toLocaleTimeString(),
-    },
-    yo: {
-      by: "RESPONDER",
-      content: "Yo! How's it going? Need any help?",
-      time: new Date().toLocaleTimeString(),
-    },
-    morning: {
-        by: "RESPONDER",
-        content: "Morning! How can I assist you today?",
-        time: new Date().toLocaleTimeString(),
-      },
-    thanks: {
-      by: "RESPONDER",
-      content: "You're welcome! If you need anything else, feel free to ask.",
-      time: new Date().toLocaleTimeString(),
-    }
-
+    by: "RESPONDER",
+    content: "I'm doing great! How about you?",
+    time: new Date().toLocaleTimeString(),
+  },
+  bye: {
+    by: "RESPONDER",
+    content: "Goodbye! Have a great day ahead!",
+    time: new Date().toLocaleTimeString(),
+  },
+  thank: {
+    by: "RESPONDER",
+    content: "You're welcome! Let me know if you need anything else.",
+    time: new Date().toLocaleTimeString(),
+  },
+  yo: {
+    by: "RESPONDER",
+    content: "Yo! How's it going? Need any help?",
+    time: new Date().toLocaleTimeString(),
+  },
 };
 
 const getAiResponse = (s: string): Omit<AiMessage, "id"> => {
   for (const k in aiResponseDict) {
-    if (s.includes(k)) {
+    if (s.toLowerCase().includes(k)) {
       return aiResponseDict[k as keyof typeof aiResponseDict];
     }
   }
