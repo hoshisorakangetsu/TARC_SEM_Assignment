@@ -16,7 +16,7 @@ function ProjectCard({
 }: Project & { id: number }) {
   return (
     <Link to="/projects/$id" params={{id: id.toString()}} className="p-4 border border-gray-300 rounded-xl transition-all bg-primaryBg/10 shadow-md hover:shadow-lg active:shadow-md">
-      <img src={preview} alt="Project Preview Image" className="h-60 w-full object-cover" />
+      <img src={preview} alt="Project Preview Image" className="h-60 w-full object-cover rounded-md shadow-sm" />
       <h1 className="font-bold text-2xl my-4 mb-2">{name}</h1>
       <p className="mb-6">{shortDescription}</p>
       <div className="flex flex-wrap gap-2 mb-4">
