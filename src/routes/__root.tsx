@@ -16,7 +16,7 @@ function Root() {
   const [chatBotActivated, setChatBotActivated] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setFeedbackShown(true), 5000);
+    setTimeout(() => setFeedbackShown(true), 30000);
   }, []);
 
   return (
