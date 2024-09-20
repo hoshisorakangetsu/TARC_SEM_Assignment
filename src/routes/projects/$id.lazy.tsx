@@ -16,16 +16,16 @@ function TeamMember({
   programme: string;
 }) {
   return (
-    <div className="flex w-full items-center gap-2">
+    <div className="flex w-full items-center gap-2 overflow-hidden">
       <img
         src={avatar}
         alt=""
         className="aspect-square rounded-full max-w-10 h-full border"
       />
-      <div>
+      <div className="w-full overflow-hidden">
         <p className="font-medium">{name}</p>
         <p
-          className="text-sm text-gray-500 text-ellipsis max-w-[35ch] whitespace-nowrap overflow-hidden"
+          className="text-sm text-gray-500 text-ellipsis w-full whitespace-nowrap overflow-hidden"
           title={programme}
         >
           {programme}
@@ -64,7 +64,7 @@ function ProjectDetail() {
               ))}
             </div>
             <h1 className="font-bold text-2xl my-4">Project Overview</h1>
-            <p className="mb-6">{detail.overview}</p>
+            <p className="mb-6 text-justify">{detail.overview}</p>
           </div>
           <div className="p-6 min-w-80 max-w-md border shadow-lg rounded-lg h-fit">
             <h1 className="text-xl font-bold">Team Members</h1>

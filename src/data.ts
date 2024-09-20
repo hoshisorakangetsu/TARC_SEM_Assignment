@@ -14,9 +14,15 @@ import BachelorSoftwareSystemsDevelopment from "@/assets/bachelor_information_te
 import BachelorSoftwareEngineering from "@/assets/bachelor_software_engineering.png";
 
 // project previews
+import LimeLuxPreview from "@/assets/project_preview/LimeLux.png"
+import WSpotPreview from "@/assets/project_preview/w-spot.png"
 
 // team member avatars
 import HanyueAvatar from "@/assets/avatar/hanyue.jpg";
+import Avatar1 from "@/assets/avatar/avatar_team_member_1.png"
+import Avatar2 from "@/assets/avatar/avatar_team_member_2.png"
+import Avatar3 from "@/assets/avatar/avatar_team_member_3.png"
+import Avatar4 from "@/assets/avatar/avatar_team_member_4.png"
 
 export interface DiplomaCourse {
   title: string;
@@ -715,29 +721,59 @@ export const StudentProjects: Project[] = [
   {
     name: "LimeLux",
     link: "https://hoshisorakangetsu.github.io/limelux/src/html",
-    overview:"LimeLux is askdjhasd aksjdh askdjh asdasdasd asdhgsas",
-    shortDescription: "A website",
-    preview: "https://placehold.co/600x400", // change to real image
-    tags: ["HTML", "CSS", "JS"],
+    overview:"Built with HTML, CSS and JS, Wong et al created LimeLux with their knowledge obtained from the Introduction to Web Development course in their Foundation programme. LimeLux, as a part of the assignment submission to the aforementioned course, innovates the web or poster design services, offering high-quality prebuilt and custom websites designed to meet the needs of businesses and individuals alike.  For those seeking a more tailored solution, LimeLux provides fully customized website design services, ensuring every aspect of the website aligns with the client's unique vision. ",
+    shortDescription: "A website that offers prebuilts and custom websites for business and individuals.",
+    preview: LimeLuxPreview, 
+    tags: ["Web", "HTML", "CSS", "JS"],
     members: [
       {
         avatar: HanyueAvatar,
         name: "Wong Xuan Bin",
-        programme: "Bachelor of Software Engineering (HONOURS)",
+        programme: "Foundation in Computing",
+      },
+      {
+        avatar: Avatar1,
+        name: "Neoh Soon Chee",
+        programme: "Foundation in Computing",
+      },
+      {
+        avatar: Avatar2,
+        name: "Lee Wei Ling",
+        programme: "Foundation in Computing",
       },
     ],
   },
   {
     name: "W-Spot",
     link: "https://hoshisorakangetsu.github.io/w-spot/html",
-    overview:"LimeLux is askdjhasd aksjdh askdjh asdasdasd asdhgsas",
-    shortDescription: "A website",
-    preview: "https://placehold.co/600x800", // change to real image
-    tags: ["HTML", "CSS", "JS"],
+    overview:"Built with HTML, CSS and JS, Wong et al created W-Spot with their knowledge obtained from the Introduction to Web Development course in their Bachelor programme. Aiming to innovate the Penang tourism industry, W-Spot, as a assignment submission for the aforementioned course, offers Penang residents to become guides and offer personalized travel packages to tourists. Additionally,  W-Spot allow tourists to share their experienced on popular places visited in Penang during their visit through blog, offering information to tourists. Interestingly, in an attempt to create this stunning project, Wong et al explored beyond the course scope and discovered the usage of the localStorage Web API to demonstrate a \"fake database\" without having to dive into the complexity of managing a backend web service.",
+    shortDescription: "A website that offers travel packages in Penang and opportunity for Penang citizens to become guides.",
+    preview: WSpotPreview, 
+    tags: ["Web", "HTML", "CSS", "JS", "JS localStorage"],
     members: [
       {
         avatar: HanyueAvatar,
         name: "Wong Xuan Bin",
+        programme: "Bachelor of Software Engineering (HONOURS)",
+      },
+      {
+        avatar: Avatar1,
+        name: "Neoh Soon Chee",
+        programme: "Bachelor of Software Engineering (HONOURS)",
+      },
+      {
+        avatar: Avatar2,
+        name: "Chalit Carsen Mo",
+        programme: "Bachelor of Software Engineering (HONOURS)",
+      },
+      {
+        avatar: Avatar3,
+        name: "Chiam Yi Hoong",
+        programme: "Bachelor of Software Engineering (HONOURS)",
+      },
+      {
+        avatar: Avatar4,
+        name: "Yong Yi Kit",
         programme: "Bachelor of Software Engineering (HONOURS)",
       },
     ],
